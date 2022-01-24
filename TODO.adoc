@@ -1,0 +1,13 @@
+// SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+// SPDX-License-Identifier: Apache-2.0
+= sdavids-project-template
+Sebastian Davids <sdavids@gmx.de>
+// Metadata:
+:description: TODO
+
+* Find/Replace `sdavids-project-template` with the new project name
+
+// -
+* Update `:description:` in `README.adoc`
+* Remove the _Using This Template Repository_ section from `README.adoc`
+* Add meaningful content to `README.adoc`
