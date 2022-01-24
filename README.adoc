@@ -1,0 +1,246 @@
+// SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+// SPDX-License-Identifier: Apache-2.0
+= sdavids-project-template
+Sebastian Davids <sdavids@gmx.de>
+// Metadata:
+:description: Repository containing template projects.
+// Settings:
+:sectnums:
+:sectanchors:
+:sectlinks:
+:toc: macro
+:toclevels: 3
+:toc-placement!:
+:hide-uri-scheme:
+:source-highlighter: rouge
+:rouge-style: github
+
+ifdef::env-browser[:outfilesuffix: .adoc]
+
+ifdef::env-github[]
+:outfilesuffix: .adoc
+:important-caption: :heavy_exclamation_mark:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+
+== Using This Template Repository
+
+This repository contains project templates--each template is in its own branch.
+
+The following project templates are available:
+
+https://github.com/sdavids/sdavids-project-template/tree/main?tab=readme-ov-file#sdavids-project-template[main]:: a basic project setup
+
+https://github.com/sdavids/sdavids-project-template/tree/docs?tab=readme-ov-file#sdavids-project-template[docs]:: a documentation project setup
+
+https://github.com/sdavids/sdavids-project-template/tree/latex?tab=readme-ov-file#sdavids-project-template[latex]:: a LaTeX project setup
+
+https://github.com/sdavids/sdavids-project-template/tree/rust-lang?tab=readme-ov-file#sdavids-project-template[rust-lang]:: a Rust project setup
+
+https://github.com/sdavids/sdavids-project-template/tree/swift-lang?tab=readme-ov-file#sdavids-project-template[swift-lang]:: a Swift project setup
+
+https://github.com/sdavids/sdavids-project-template/tree/go-lang?tab=readme-ov-file#sdavids-project-template[go-lang]:: a Go project setup
+
+https://github.com/sdavids/sdavids-project-template/tree/go-lang-server-http?tab=readme-ov-file#sdavids-project-template[go-lang-server-http]:: a Go HTTP(S) server project setup
+
+https://github.com/sdavids/sdavids-project-template/tree/js-html-css?tab=readme-ov-file#sdavids-project-template[js-html-css]:: a JavaScript, HTML, and CSS no-build project setup
+
+https://github.com/sdavids/sdavids-project-template/tree/ts-vite?tab=readme-ov-file#sdavids-project-template[ts-vite]:: a TypeScript project setup with the following frameworks and tools:
++
+* https://vite.dev[Vite]
+* https://eslint.org[ESLint]
+* https://prettier.io[Prettier]
+* https://containers.dev[Development Container]
+
+https://github.com/sdavids/sdavids-project-template/tree/ts-vite-with-tests?tab=readme-ov-file#sdavids-project-template[ts-vite-with-tests]::
++
+same as `ts-vite` plus
++
+* https://vitest.dev[Vitest]
+* https://playwright.dev[Playwright]
+* https://github.com/GoogleChrome/lighthouse-ci#readme[Lighthouse CI]
+* https://lychee.cli.rs[lychee]
+
+https://github.com/sdavids/sdavids-project-template/tree/ts-vite-react?tab=readme-ov-file#sdavids-project-template[ts-vite-react]::
++
+same as `ts-vite` plus
++
+* https://react.dev[React]
+
+https://github.com/sdavids/sdavids-project-template/tree/ts-vite-react-with-tests?tab=readme-ov-file#sdavids-project-template[ts-vite-react-with-tests]::
++
+same as `ts-vite-react` plus
++
+* https://vitest.dev[Vitest]
+* https://playwright.dev[Playwright]
+* https://github.com/GoogleChrome/lighthouse-ci#readme[Lighthouse CI]
+* https://lychee.cli.rs[lychee]
+
+[WARNING]
+====
+All branches of this repository will be force-pushed to--this is unfortunately necessary so that using this template project is straightforward.
+====
+
+. Install https://github.com/cli/cli#installation[GitHub CLI].
+
+. Initialize a new repository from this template repository:
++
+[,console]
+----
+$ gh repo create my-project --clone --template=sdavids/sdavids-project-template --private --include-all-branches
+$ cd my-project
+----
++
+Alternatively, you can use the following two shell functions:
++
+* https://sdavids.github.io/sdavids-shell-misc/user-guide/functions/gh/repo-new-gh.html[repo_new_gh]
++
+* https://sdavids.github.io/sdavids-shell-misc/user-guide/functions/gh/repo-new-local.html[repo_new_local]
+
+. Browse the available project templates:
++
+[,console]
+----
+$ git ls-remote --quiet --branches origin | awk '{print $2}' | cut -d '/' -f3 | grep -v main
+...
+go-lang
+...
+----
++
+[TIP]
+====
+Use a graphical Git tool for this step.
+====
+
+. Cherry-pick the single commit from the appropriate branch to set up a project (e.g. `go-lang`):
++
+[,console]
+----
+$ git cherry-pick --no-commit --strategy-option=theirs $(git rev-parse origin/go-lang)
+$ git commit --amend --no-edit --reset-author
+$ git push --force-with-lease
+----
++
+[TIP]
+====
+Use a graphical Git tool for this step if you want more control over the cherry-pick.
+====
+
+. Remove the unnecessary branches:
++
+[,console]
+----
+$ scripts/git_delete_branches.sh
+----
++
+Afterward, keep or delete the script:
++
+[,console]
+----
+$ rm scripts/git_delete_branches.sh
+----
+
+. <<dev-env-installation,Install>> the development environment setup.
+
+. Initialize the Git hooks:
++
+[,console]
+----
+$ git config set core.hooksPath .githooks
+----
+
+. Do the link:TODO[TODOs]; delete the file afterward:
++
+[,console]
+----
+$ rm TODO
+----
+
+. Amend the initial commit:
++
+[,console]
+----
+$ git commit --amend --no-edit
+----
+
+. Push to origin:
++
+[,console]
+----
+$ git push --force-with-lease
+----
++
+Alternatively, you can delete the created GitHub repository and republish it:
++
+[,console]
+----
+$ gh repo delete my-project --yes
+$ gh repo create my-project --source . --push --private
+----
++
+Or with the https://sdavids.github.io/sdavids-shell-misc/user-guide/functions/gh/repo-publish-to-gh.html[repo_publish_to_gh] shell function:
++
+[,console]
+----
+$ gh repo delete my-project --yes
+$ repo_publish_to_gh
+----
+
+. Cleanup your local Git repository:
++
+[,console]
+----
+$ scripts/git_cleanup.sh -e now
+----
+
+. Your project is ready to go 🎉
+
+== Development Environment Setup
+
+[IMPORTANT]
+====
+After initializing this repository, you need to install the Git hooks via:
+
+[,console]
+----
+$ git config set core.hooksPath .githooks
+----
+====
+
+[#dev-env-installation]
+=== Installation
+
+==== shellcheck
+
+===== Linux
+
+[,console]
+----
+$ sudo apt-get install shellcheck
+----
+
+===== Mac
+
+[,console]
+----
+$ brew install shellcheck
+----
+
+==== shfmt
+
+===== Linux
+
+[,console]
+----
+$ sudo apt-get install shfmt
+----
+
+===== Mac
+
+[,console]
+----
+$ brew install shfmt
+----
