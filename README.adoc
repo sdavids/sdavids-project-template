@@ -1,0 +1,232 @@
+// SPDX-FileCopyrightText: © 2024 Sebastian Davids <sdavids@gmx.de>
+// SPDX-License-Identifier: Apache-2.0
+= sdavids-project-template
+Sebastian Davids <sdavids@gmx.de>
+// Metadata:
+:description: Repository containing template projects.
+// Settings:
+:sectnums:
+:sectanchors:
+:sectlinks:
+:toc: macro
+:toclevels: 3
+:toc-placement!:
+:hide-uri-scheme:
+:source-highlighter: rouge
+:rouge-style: github
+// Refs:
+:uri-apache-license: https://www.apache.org/licenses/LICENSE-2.0
+:uri-contributor-covenant: https://www.contributor-covenant.org
+:uri-google-style: https://github.com/google/gts
+
+ifdef::env-browser[:outfilesuffix: .adoc]
+
+ifdef::env-github[]
+:outfilesuffix: .adoc
+:tip-caption: :bulb:
+:warning-caption: :warning:
+:badges:
+endif::[]
+
+ifdef::badges[]
+image:https://img.shields.io/github/license/sdavids/sdavids-project-template[Apache License,Version 2.0,link={uri-apache-license}]
+image:https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg[Contributor Covenant,Version 2.1,link={uri-contributor-covenant}]
+image:https://img.shields.io/badge/code%20style-google-blueviolet.svg[Code Style: Google,link={uri-google-style}]
+image:https://img.shields.io/osslifecycle/sdavids/sdavids-project-template[OSS Lifecycle]
+image:https://img.shields.io/maintenance/yes/2024[Maintenance]
+image:https://img.shields.io/github/last-commit/sdavids/sdavids-project-template[GitHub last commit]
+image:http://isitmaintained.com/badge/resolution/sdavids/sdavids-project-template.svg[Resolution Time]
+image:http://isitmaintained.com/badge/open/sdavids/sdavids-project-template.svg[Open Issues]
+endif::[]
+
+toc::[]
+
+== Using This Template Repository
+
+This repository contains project templates--each template is in its own branch.
+
+The following project templates are available:
+
+https://github.com/sdavids/sdavids-project-template/tree/docs?tab=readme-ov-file#sdavids-project-template[docs]:: an Asciidoc project setup
+https://github.com/sdavids/sdavids-project-template/tree/go-lang?tab=readme-ov-file#sdavids-project-template[go-lang]:: a Go project setup
+https://github.com/sdavids/sdavids-project-template/tree/html-css-js?tab=readme-ov-file#sdavids-project-template[html-css-js]:: an HTML/CSS/JS project setup
+https://github.com/sdavids/sdavids-project-template/tree/latex?tab=readme-ov-file#sdavids-project-template[latex]:: a LaTeX project setup
+https://github.com/sdavids/sdavids-project-template/tree/rust-lang?tab=readme-ov-file#sdavids-project-template[rust-lang]:: a Rust project setup
+https://github.com/sdavids/sdavids-project-template/tree/swift-lang?tab=readme-ov-file#sdavids-project-template[swift-lang]:: a Swift project setup
+
+[WARNING]
+====
+All branches of this repository will be force-pushed to--this is unfortunately necessary so that using this template project is easy.
+====
+
+. Install https://github.com/cli/cli#installation[GitHub CLI].
+
+. Initialize a new repository from this template repository:
++
+[source,shell]
+----
+$ gh repo create my-project --clone --template=sdavids/sdavids-project-template --private --include-all-branches
+$ cd my-project
+----
++
+Alternatively, you can use the following two https://github.com/sdavids/sdavids-shell-misc/blob/main/README.adoc#2-functions[shell functions]:
++
+* https://github.com/sdavids/sdavids-shell-misc/blob/main/README.adoc#repo_new_gh[repo_new_gh]
++
+* https://github.com/sdavids/sdavids-shell-misc/blob/main/README.adoc#repo_new_local[repo_new_local]
+
+. Browse the available project templates:
++
+[source,shell]
+----
+$ git ls-remote --quiet --branches origin | awk '{print $2}' | cut -d '/' -f3 | grep -v main
+...
+go-lang
+...
+----
++
+[TIP]
+====
+Use a graphical Git tool for this step.
+====
+
+. Cherry-pick the single commit from the appropriate branch to set up a project (e.g. `go-lang`):
++
+[source,shell]
+----
+$ git cherry-pick --no-commit --strategy-option=theirs $(git rev-parse origin/go-lang)
+$ git commit --amend --no-edit
+$ git push --force-with-lease
+----
++
+[TIP]
+====
+Use a graphical Git tool for this step if you want more control over the cherry-pick.
+====
+
+. Remove the unnecessary branches:
++
+[source,shell]
+----
+$ scripts/git_delete_branches.sh
+----
++
+Afterward keep or delete the script:
++
+[source,shell]
+----
+$ rm scripts/git_delete_branches.sh
+----
+
+. <<dev-env-installation,Install>> the development environment setup.
+
+. Initialize the Git hooks:
++
+[source,shell]
+----
+$ git config core.hooksPath .githooks
+----
+
+. Set the https://git-scm.com/docs/git-config#Documentation/git-config.txt-blameignoreRevsFile[ignore-revs-file]:
++
+[source,shell]
+----
+$ git config blame.ignoreRevsFile .git-blame-ignore-revs
+----
+
+. Do the link:TODO[TODOs]; delete the file afterward:
++
+[source,shell]
+----
+$ rm TODO
+----
+
+. Amend the initial commit and push to origin:
++
+[source,shell]
+----
+$ git commit --amend --no-edit
+$ git push --force-with-lease
+----
+
+. Cleanup your local Git repository:
++
+[source,shell]
+----
+$ scripts/git_cleanup.sh -e now
+----
+
+. Your project is ready to go 🎉
+
+== License
+
+Apache License, Version 2.0 (link:LICENSES/Apache-2.0.txt[Apache-2.0.txt] or {uri-apache-license}).
+
+== Contribution
+
+See link:CONTRIBUTING{outfilesuffix}[].
+
+== Code of Conduct
+
+We abide by the {uri-contributor-covenant}[Contributor Covenant, Version 2.1] and ask that you do as well.
+
+For more information, please see link:CODE_OF_CONDUCT.md[Code of Conduct].
+
+== Development Environment Setup
+
+[IMPORTANT]
+====
+After initializing this repository you need to install the Git hooks via:
+
+[source,shell]
+----
+$ git config core.hooksPath .githooks
+----
+
+And configure the https://git-scm.com/docs/git-config#Documentation/git-config.txt-blameignoreRevsFile[ignore-revs-file]:
+
+[source,shell]
+----
+$ git config blame.ignoreRevsFile .git-blame-ignore-revs
+----
+====
+
+[#dev-env-installation]
+=== Installation
+
+==== shellcheck
+
+===== Linux
+
+[source,shell]
+----
+$ sudo apt-get install shellcheck
+----
+
+===== Mac
+
+[source,shell]
+----
+$ brew install shellcheck
+----
+
+==== shfmt
+
+===== Linux
+
+[source,shell]
+----
+$ sudo apt-get install shfmt
+----
+
+===== Mac
+
+[source,shell]
+----
+$ brew install shfmt
+----
+
+[#ide]
+=== IDE
+
+See link:CODING_STYLE.adoc#ide-configuration[IDE Configuration].
