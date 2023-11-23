@@ -11,3 +11,12 @@ SPDX-PackageDownloadLocation = "https://github.com/sdavids/sdavids-project-templ
 path = "OSSMETADATA"
 SPDX-FileCopyrightText = "© 2024 Sebastian Davids <sdavids@gmx.de>"
 SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = [
+  "**.xcodeproj/**",
+  "**/Assets.xcassets/**",
+  "**/Preview Content/**",
+]
+SPDX-FileCopyrightText = "© 2024 Sebastian Davids <sdavids@gmx.de>"
+SPDX-License-Identifier = "Apache-2.0"

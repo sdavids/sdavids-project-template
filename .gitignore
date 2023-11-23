@@ -41,3 +41,9 @@ jffi*.dylib
 
 ### direnv files ###
 .envrc
+
+### XCode ###
+xcuserdata/
+
+## Playgrounds ###
+timeline.xctimeline
