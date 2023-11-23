@@ -11,3 +11,5 @@
 
 *.adoc linguist-documentation
 *.sh diff=bash
+
+contents.xcplayground whitespace=tab-in-indent,trailing-space,tabwidth=4
