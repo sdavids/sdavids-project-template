@@ -41,6 +41,7 @@ readonly dry_run="${dry_run:-}"
     -e .fleet \
     -e .idea \
     -e .vscode \
+    -e xcuserdata \
     .
 
   if [ -n "${dry_run}" ]; then
