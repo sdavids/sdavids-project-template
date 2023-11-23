@@ -14,6 +14,8 @@ Sebastian Davids <sdavids@gmx.de>
 :hide-uri-scheme:
 :source-highlighter: rouge
 :rouge-style: github
+// Refs:
+:swiftly-install-url: https://www.swift.org/install/macos/
 
 ifdef::env-browser[:outfilesuffix: .adoc]
 
@@ -145,6 +147,13 @@ $ rm scripts/git_delete_branches.sh
 
 . <<dev-env-installation,Install>> the development environment setup.
 
+. Set up the Swift toolchain via {swiftly-install-url}[swiftly]:
++
+[,console]
+----
+$ swiftly use
+----
+
 . Initialize the Git hooks:
 +
 [,console]
@@ -244,3 +253,7 @@ $ sudo apt-get install shfmt
 ----
 $ brew install shfmt
 ----
+
+==== swiftly
+
+Install {swiftly-install-url}[swiftly].
