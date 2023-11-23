@@ -6,3 +6,17 @@ version = 1
 SPDX-PackageName = "sdavids-project-template"
 SPDX-PackageSupplier = "Sebastian Davids <sdavids@gmx.de>"
 SPDX-PackageDownloadLocation = "https://github.com/sdavids/sdavids-project-template"
+
+[[annotations]]
+path = [
+  "**.xcodeproj/**",
+  "**/Assets.xcassets/**",
+  "**/Preview Content/**",
+]
+SPDX-FileCopyrightText = "© 2025 Sebastian Davids <sdavids@gmx.de>"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ".swift-version"
+SPDX-FileCopyrightText = "© 2025 Sebastian Davids <sdavids@gmx.de>"
+SPDX-License-Identifier = "Apache-2.0"
