@@ -46,6 +46,7 @@ fi
     -e .fleet \
     -e .idea \
     -e .vscode \
+    -e xcuserdata \
     .
 
   if [ -n "${dry_run}" ]; then

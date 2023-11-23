@@ -14,7 +14,9 @@ Sebastian Davids <sdavids@gmx.de>
 
 toc::[]
 
-We use the https://github.com/google/styleguide[Google Style] for all code.
+We use the https://github.com/google/styleguide[Google Style] for all code, except:
+
+Swift:: https://github.com/swiftlang/swift-format[swift-format]
 
 [#ide-configuration]
 == IDE Configuration
