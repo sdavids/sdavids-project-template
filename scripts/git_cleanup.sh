@@ -46,6 +46,8 @@ fi
     -e .fleet \
     -e .idea \
     -e .vscode \
+    -e xcuserdata \
+    -e playground.xcworkspace \
     .
 
   if [ -n "${dry_run}" ]; then
