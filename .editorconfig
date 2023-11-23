@@ -18,3 +18,7 @@ max_line_length = 80
 
 [*.adoc]
 max_line_length = off
+
+[*.plist]
+indent_style = tab
+indent_size = 4
