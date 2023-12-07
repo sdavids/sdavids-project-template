@@ -11,3 +11,13 @@ Sebastian Davids <sdavids@gmx.de>
 * Update `:description:` in `README.adoc`
 * Remove the _Using This Template Repository_ section from `README.adoc`
 * Add meaningful content to `README.adoc`
+
+// -
+** Modify `scripts/build.sh`
+** Modify `scripts/build_release.sh`
+** Modify `Dockerfile`
+
+// -
+* Update `go.mod`:
+** module name
+* Update imports
