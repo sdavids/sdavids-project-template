@@ -14,6 +14,11 @@ Sebastian Davids <sdavids@gmx.de>
 :hide-uri-scheme:
 :source-highlighter: rouge
 :rouge-style: github
+// Refs:
+:docker-install-url: https://docs.docker.com/install/
+:go-install-url: https://go.dev/doc/install
+:golangci-install-url: https://golangci-lint.run/welcome/install/#local-installation
+:hadolint-install-url: https://github.com/hadolint/hadolint?tab=readme-ov-file#install
 
 ifdef::env-browser[:outfilesuffix: .adoc]
 
@@ -198,6 +203,59 @@ $ scripts/git_cleanup.sh -e now
 
 . Your project is ready to go 🎉
 
+== Development
+
+[IMPORTANT]
+====
+Before running this project, you need to create a self-signed certificate:
+
+[,console]
+----
+$ scripts/create_self_signed_cert.sh -d certs
+----
+
+=> `certs/cert.pem` and `certs/key.pem`
+====
+
+=== Dev
+
+[,console]
+----
+$ air
+----
+
+=> https://localhost:3000
+
+=== Build
+
+==== Debug Build
+
+[,console]
+----
+$ scripts/build.sh
+----
+
+==== Release Build
+
+[,console]
+----
+$ scripts/build_release.sh
+----
+
+=== Format Source Code
+
+[,console]
+----
+$ scripts/format.sh
+----
+
+=== Lint Source Code
+
+[,console]
+----
+$ scripts/lint.sh
+----
+
 == Development Environment Setup
 
 [IMPORTANT]
@@ -212,6 +270,45 @@ $ git config set core.hooksPath .githooks
 
 [#dev-env-installation]
 === Installation
+
+==== Docker
+
+Install {docker-install-url}[Docker].
+
+==== Go
+
+Install {go-install-url}[Go].
+
+===== Air
+
+[,console]
+----
+$ go install github.com/air-verse/air@latest
+----
+
+===== gopls
+
+[,console]
+----
+$ go install golang.org/x/tools/gopls@latest
+----
+
+==== golangci-lint
+
+Install {golangci-install-url}[golangci-lint].
+
+==== hadolint
+
+===== Linux
+
+Install {hadolint-install-url}[hadolint].
+
+===== Mac
+
+[,console]
+----
+$ brew install hadolint
+----
 
 ==== shellcheck
 
@@ -243,4 +340,20 @@ $ sudo apt-get install shfmt
 [,console]
 ----
 $ brew install shfmt
+----
+
+==== yamllint
+
+===== Linux
+
+[,console]
+----
+$ sudo apt-get install yamllint
+----
+
+===== Mac
+
+[,console]
+----
+$ brew install yamllint
 ----
