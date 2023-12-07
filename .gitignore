@@ -40,3 +40,6 @@ jffi*.dylib
 
 ### direnv files ###
 .envrc
+
+### Build ###
+target/

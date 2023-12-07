@@ -15,6 +15,10 @@ Sebastian Davids <sdavids@gmx.de>
 :source-highlighter: rouge
 :rouge-style: github
 // Refs:
+:docker-install-url: https://docs.docker.com/install/
+:go-install-url: https://go.dev/doc/install
+:golangci-install-url: https://golangci-lint.run/usage/install/#local-installation
+:hadolint-install-url: https://github.com/hadolint/hadolint?tab=readme-ov-file#install
 :uri-apache-license: https://www.apache.org/licenses/LICENSE-2.0
 :uri-contributor-covenant: https://www.contributor-covenant.org
 :uri-google-style: https://github.com/google/gts
@@ -158,6 +162,29 @@ $ scripts/git_cleanup.sh -e now
 
 . Your project is ready to go 🎉
 
+== Development
+
+=== Build
+
+[source,shell]
+----
+$ scripts/build.sh
+----
+
+=== Format Source Code
+
+[source,shell]
+----
+$ scripts/format.sh
+----
+
+=== Lint Source Code
+
+[source,shell]
+----
+$ scripts/lint.sh
+----
+
 == License
 
 Apache License, Version 2.0 (link:LICENSES/Apache-2.0.txt[Apache-2.0.txt] or {uri-apache-license}).
@@ -194,6 +221,24 @@ $ git config blame.ignoreRevsFile .git-blame-ignore-revs
 [#dev-env-installation]
 === Installation
 
+==== Docker
+
+Install {docker-install-url}[Docker].
+
+==== Go
+
+Install {go-install-url}[Go].
+
+==== golangci-lint
+
+Install {golangci-install-url}[golangci-lint].
+
+==== hadolint
+
+===== Linux
+
+Install {hadolint-install-url}[hadolint].
+
 ==== shellcheck
 
 ===== Linux
@@ -224,6 +269,22 @@ $ sudo apt-get install shfmt
 [source,shell]
 ----
 $ brew install shfmt
+----
+
+==== yamllint
+
+===== Linux
+
+[source,shell]
+----
+$ sudo apt-get install yamllint
+----
+
+===== Mac
+
+[source,shell]
+----
+$ brew install yamllint
 ----
 
 [#ide]
