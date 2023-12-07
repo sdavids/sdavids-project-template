@@ -15,6 +15,10 @@ Sebastian Davids <sdavids@gmx.de>
 :source-highlighter: rouge
 :rouge-style: github
 // Refs:
+:docker-install-url: https://docs.docker.com/install/
+:go-install-url: https://go.dev/doc/install
+:golangci-install-url: https://golangci-lint.run/welcome/install/#local-installation
+:hadolint-install-url: https://github.com/hadolint/hadolint?tab=readme-ov-file#install
 :uri-apache-license: https://www.apache.org/licenses/LICENSE-2.0
 :uri-contributor-covenant: https://www.contributor-covenant.org
 :uri-google-style: https://github.com/google/gts
@@ -64,7 +68,7 @@ All branches of this repository will be force-pushed to--this is unfortunately n
 
 . Initialize a new repository from this template repository:
 +
-['shell]
+[,shell]
 ----
 $ gh repo create my-project --clone --template=sdavids/sdavids-project-template --private --include-all-branches
 $ cd my-project
@@ -159,6 +163,29 @@ $ scripts/git_cleanup.sh -e now
 
 . Your project is ready to go 🎉
 
+== Development
+
+=== Build
+
+[,console]
+----
+$ scripts/build.sh
+----
+
+=== Format Source Code
+
+[,console]
+----
+$ scripts/format.sh
+----
+
+=== Lint Source Code
+
+[,console]
+----
+$ scripts/lint.sh
+----
+
 == License
 
 Apache License, Version 2.0 (link:LICENSES/Apache-2.0.txt[Apache-2.0.txt] or {uri-apache-license}).
@@ -195,6 +222,24 @@ $ git set config blame.ignoreRevsFile .git-blame-ignore-revs
 [#dev-env-installation]
 === Installation
 
+==== Docker
+
+Install {docker-install-url}[Docker].
+
+==== Go
+
+Install {go-install-url}[Go].
+
+==== golangci-lint
+
+Install {golangci-install-url}[golangci-lint].
+
+==== hadolint
+
+===== Linux
+
+Install {hadolint-install-url}[hadolint].
+
 ==== shellcheck
 
 ===== Linux
@@ -225,6 +270,22 @@ $ sudo apt-get install shfmt
 [,console]
 ----
 $ brew install shfmt
+----
+
+==== yamllint
+
+===== Linux
+
+[,console]
+----
+$ sudo apt-get install yamllint
+----
+
+===== Mac
+
+[,console]
+----
+$ brew install yamllint
 ----
 
 [#ide]
