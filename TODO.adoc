@@ -11,3 +11,23 @@ Sebastian Davids <sdavids@gmx.de>
 * Update `:description:` in `README.adoc`
 * Remove the _Using This Template Repository_ section from `README.adoc`
 * Add meaningful content to `README.adoc`
+
+// -
+** Modify `scripts/build.sh`
+** Modify `scripts/build_release.sh`
+** Modify `Dockerfile`
+
+// -
+* Update `scripts/docker_*.sh` scripts
+** `namespace`
+** `repository`
+** `label_group`
+** `container_name`
+** `network_name`
+
+// -
+* Update `go.mod`:
+** module name
+* Update imports
+* Adjust `constants.DefaultServiceName`
+* Update `full_bin` in `.air.toml`
