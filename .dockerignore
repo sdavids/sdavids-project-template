@@ -1,0 +1,10 @@
+# SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+# SPDX-License-Identifier: Apache-2.0
+
+# https://docs.docker.com/build/building/context/#dockerignore-files
+
+*
+!go.mod
+!go.sum
+!internal
+!main.go
