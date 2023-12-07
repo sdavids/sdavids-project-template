@@ -46,6 +46,8 @@ fi
     -e .fleet \
     -e .idea \
     -e .vscode \
+    -e certs/cert.pem \
+    -e certs/key.pem \
     .
 
   if [ -n "${dry_run}" ]; then

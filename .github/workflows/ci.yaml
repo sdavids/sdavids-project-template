@@ -1,0 +1,74 @@
+---
+# SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+# SPDX-License-Identifier: Apache-2.0
+
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+name: ci
+on: # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+permissions: {}
+jobs:
+  # unfortunately each job is billed for at least 1 minute in GH Actions
+  # so use one big one to save GH Action minutes
+  # https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions
+  lint-build-test:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        # https://github.com/actions/checkout/releases
+        uses: actions/checkout@v4.2.2
+      - name: Classify changes
+        # https://github.com/dorny/paths-filter/releases
+        uses: dorny/paths-filter@v3.0.2
+        id: changes
+        with:
+          filters: |
+            sh:
+              - '**.sh'
+            yaml:
+              - '**.yaml'
+            Dockerfile:
+              - .hadolint.yaml
+              - Dockerfile
+            go:
+              - go.mod
+              - go.sum
+              - go.work
+              - '**.go'
+      - if: steps.changes.outputs.sh == 'true'
+        name: Lint shell scripts
+        run: scripts/shellscript-check.sh
+      - if: steps.changes.outputs.yaml == 'true'
+        name: Lint YAML files
+        run: yamllint --strict .
+      - if: steps.changes.outputs.Dockerfile == 'true'
+        name: Lint Dockerfile
+        # https://github.com/hadolint/hadolint-action/releases
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+          no-color: true
+      - if: steps.changes.outputs.go == 'true'
+        name: Install Go
+        # https://github.com/actions/setup-go/releases
+        uses: actions/setup-go@v5.5.0
+        with:
+          go-version-file: go.mod
+      - if: steps.changes.outputs.go == 'true'
+        name: Lint Go files
+        # https://github.com/golangci/golangci-lint-action/releases
+        uses: golangci/golangci-lint-action@v8.0.0
+        with:
+          # https://github.com/golangci/golangci-lint/releases
+          version: v2.2.1
+      - if: steps.changes.outputs.go == 'true'
+        name: Build Go files
+        run: scripts/build_release.sh
