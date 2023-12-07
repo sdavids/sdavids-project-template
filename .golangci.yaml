@@ -1,0 +1,134 @@
+---
+# SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+# SPDX-License-Identifier: Apache-2.0
+
+# https://golangci-lint.run/usage/configuration/#config-file
+
+version: "2"
+output:
+  show-stats: false
+  formats:
+    text:
+      path: stdout
+linters:
+  default: none
+  # https://golangci-lint.run/usage/linters/
+  enable:
+    - asasalint
+    - asciicheck
+    - bidichk
+    - bodyclose
+    - containedctx
+    - contextcheck
+    - decorder
+    - depguard
+    - dogsled
+    - dupword
+    - durationcheck
+    - embeddedstructfieldcheck
+    - errchkjson
+    - errname
+    - errorlint
+    - exhaustive
+    - forcetypeassert
+    - funcorder
+    - ginkgolinter
+    - gocheckcompilerdirectives
+    - gochecknoglobals
+    - gochecknoinits
+    - gochecksumtype
+    - goconst
+    - gocritic
+    - gocyclo
+    - goheader
+    - gomoddirectives
+    - goprintffuncname
+    - gosec
+    - gosmopolitan
+    - grouper
+    - iface
+    - importas
+    - inamedparam
+    - interfacebloat
+    - loggercheck
+    - maintidx
+    - makezero
+    - mirror
+    - misspell
+    - nakedret
+    - nestif
+    - nilerr
+    - nilnil
+    - noctx
+    - noinlineerr
+    - nolintlint
+    - nosprintfhostport
+    - paralleltest
+    - perfsprint
+    - prealloc
+    - predeclared
+    - promlinter
+    - protogetter
+    - reassign
+    - recvcheck
+    - revive
+    - rowserrcheck
+    - sloglint
+    - spancheck
+    - sqlclosecheck
+    - staticcheck
+    - tagalign
+    - tagliatelle
+    - testableexamples
+    - testifylint
+    - thelper
+    - tparallel
+    - unconvert
+    - unparam
+    - usestdlibvars
+    - usetesting
+    - wastedassign
+    - whitespace
+    - wrapcheck
+    - zerologlint
+  settings:
+    depguard:
+      rules:
+        prevent_unmaintained_packages:
+          list-mode: strict
+          files:
+            - $all
+          allow:
+            - $gostd
+            - github.com/sdavids/sdavids-project-template
+          deny:
+            - pkg: io/ioutil
+              desc: >-
+                replaced by io and os packages since Go 1.16:
+                https://tip.golang.org/doc/go1.16#ioutil
+    errorlint:
+      errorf: false
+    paralleltest:
+      ignore-missing: true
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - goimports
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
