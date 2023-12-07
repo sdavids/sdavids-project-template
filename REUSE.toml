@@ -11,3 +11,8 @@ SPDX-PackageDownloadLocation = "https://github.com/sdavids/sdavids-project-templ
 path = "OSSMETADATA"
 SPDX-FileCopyrightText = "© 2024 Sebastian Davids <sdavids@gmx.de>"
 SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = "**/go.sum"
+SPDX-FileCopyrightText = "© 2024 Sebastian Davids <sdavids@gmx.de>"
+SPDX-License-Identifier = "Apache-2.0"
