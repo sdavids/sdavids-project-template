@@ -1,0 +1,6 @@
+tmp_dir = "target"
+
+[build]
+  cmd = "go build -o ./target/sdavids-project-template ./main.go"
+  full_bin = "LOG_LEVEL=DEBUG HTTPS_PORT=3000 CERT_PATH=certs/cert.pem KEY_PATH=certs/key.pem LOG_REQUESTS=true ./target/sdavids-project-template"
+  exclude_dir = ["LICENSES", "scripts"]
