@@ -12,3 +12,9 @@
 *.adoc linguist-documentation
 *.md whitespace=tab-in-indent,tabwidth=2 diff=markdown linguist-documentation
 *.sh diff=bash
+
+*.go whitespace=indent-with-non-tab,trailing-space,tabwidth=4 diff=golang
+go.mod whitespace=indent-with-non-tab,trailing-space,tabwidth=4
+go.sum linguist-generated=true
+go.work whitespace=indent-with-non-tab,trailing-space,tabwidth=4
+go.work.sum linguist-generated=true

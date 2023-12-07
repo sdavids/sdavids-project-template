@@ -22,3 +22,16 @@ max_line_length = off
 [*.md]
 trim_trailing_whitespace = false
 max_line_length = 80
+
+[*.yaml]
+max_line_length = 80
+
+[*.go]
+indent_style = tab
+indent_size = 4
+max_line_length = off
+
+[{go.mod,go.work}]
+indent_style = tab
+indent_size = 4
+max_line_length = off

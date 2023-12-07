@@ -13,6 +13,15 @@ Sebastian Davids <sdavids@gmx.de>
 * Add meaningful content to `README.adoc`
 
 // -
+** Modify `scripts/build.sh`
+** Modify `scripts/build_release.sh`
+** Modify `Dockerfile`
+
+// -
+* Update `go.mod`:
+** module name
+
+// -
 * Different license?
 ** update `LICENSE`
 ** `:uri-apache-license:` and `License` in `README.adoc`
