@@ -1,0 +1,7 @@
+# SPDX-FileCopyrightText: © 2024 Sebastian Davids <sdavids@gmx.de>
+# SPDX-License-Identifier: Apache-2.0
+
+# https://github.com/rust-lang/rustfmt/blob/master/Configurations.md
+
+newline_style = "Unix"
+tab_spaces = 2
