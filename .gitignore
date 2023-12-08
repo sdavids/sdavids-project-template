@@ -41,3 +41,7 @@ jffi*.dylib
 
 ### direnv files ###
 .envrc
+
+### Rust ###
+target/
+**/*.rs.bk

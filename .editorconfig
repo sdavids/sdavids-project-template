@@ -18,3 +18,12 @@ max_line_length = 80
 
 [*.adoc]
 max_line_length = off
+
+[*.yaml]
+max_line_length = 80
+
+[*.rs]
+max_line_length = 100
+
+[*.toml]
+max_line_length = 100
