@@ -5,6 +5,13 @@
 # SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
 # SPDX-License-Identifier: Apache-2.0
 
+# hadolint needs to be in $PATH
+# https://github.com/hadolint/hadolint
+#   Mac:
+#     brew install hadolint
+#   Linux:
+#     sudo apt-get install hadolint
+
 # _shellcheck needs to be in $PATH
 # https://www.shellcheck.net
 #   Mac:
@@ -18,6 +25,13 @@
 #     brew install shfmt
 #   Linux:
 #     sudo apt-get install shfmt
+
+# yamllint needs to be in $PATH
+# https://yamllint.readthedocs.io/en/stable/
+#   Mac:
+#     brew install yamllint
+#   Linux:
+#     sudo apt-get install yamllint
 
 set -eu
 
@@ -46,3 +60,17 @@ if command -v shfmt >/dev/null 2>&1; then
     { shfmt -l=0 . | xargs -0L1 shellcheck; } >&2
   fi
 fi
+
+if command -v yamllint >/dev/null 2>&1; then
+  # https://yamllint.readthedocs.io/en/stable/quickstart.html#running-yamllint
+  yamllint --strict . >&2
+fi
+
+if command -v hadolint >/dev/null 2>&1; then
+  # https://github.com/hadolint/hadolint#cli
+  hadolint Dockerfile >&2
+fi
+
+cargo fmt --all -- --check >&2
+
+cargo clippy --quiet --all-targets --all-features -- -D warnings >&2
