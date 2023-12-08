@@ -1,0 +1,80 @@
+---
+# SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+# SPDX-License-Identifier: Apache-2.0
+
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+name: ci
+on: # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  CARGO_TERM_COLOR: never
+  CARGO_INCREMENTAL: 0
+permissions: {}
+jobs:
+  # unfortunately each job is billed for at least 1 minute in GH Actions
+  # so use one big one to save GH Action minutes
+  # https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions
+  lint-build-test:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        # https://github.com/actions/checkout/releases
+        uses: actions/checkout@v4.2.2
+      - name: Classify changes
+        # https://github.com/dorny/paths-filter/releases
+        uses: dorny/paths-filter@v3.0.2
+        id: changes
+        with:
+          filters: |
+            sh:
+              - '**.sh'
+            yaml:
+              - '**.yaml'
+            Dockerfile:
+              - .hadolint.yaml
+              - Dockerfile
+            rust:
+              - 'src/**'
+              - 'tests/**'
+              - Cargo.lock
+              - Cargo.toml
+              - rust-toolchain.toml
+      - if: steps.changes.outputs.sh == 'true'
+        name: Lint shell scripts
+        run: scripts/shellscript-check.sh
+      - if: steps.changes.outputs.yaml == 'true'
+        name: Lint YAML files
+        run: yamllint --strict .
+      - if: steps.changes.outputs.Dockerfile == 'true'
+        name: Lint Dockerfile
+        # https://github.com/hadolint/hadolint-action/releases
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+      - if: steps.changes.outputs.rust == 'true'
+        name: Install Rust
+        run: rustup show
+      - if: steps.changes.outputs.rust == 'true'
+        name: Cache Rust files
+        # https://github.com/Swatinem/rust-cache/releases
+        uses: Swatinem/rust-cache@v2.8.0
+      - if: steps.changes.outputs.rust == 'true'
+        name: Check formatting
+        run: scripts/format_check.sh
+      - if: steps.changes.outputs.rust == 'true'
+        name: Lint files
+        run: scripts/lint.sh
+      - if: steps.changes.outputs.rust == 'true'
+        name: Test sdavids-project-template
+        run: cargo test --no-fail-fast
+      - if: steps.changes.outputs.rust == 'true'
+        name: Build sdavids-project-template
+        run: scripts/build_release.sh

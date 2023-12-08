@@ -11,3 +11,26 @@ Sebastian Davids <sdavids@gmx.de>
 * Update `:description:` in `README.adoc`
 * Remove the _Using This Template Repository_ section from `README.adoc`
 * Add meaningful content to `README.adoc`
+
+// -
+* Update `Cargo.toml`
+** bin.name
+** package.name
+** categories
+** description
+** keywords
+
+//-
+* Update `Dockerfile`
+** name of binary passed to upx
+** name of `COPY` binary
+** `LABEL`
+*** `org.opencontainers.image.title`
+*** `de.sdavids.docker.group`
+
+// -
+* Update `scripts/docker_*.sh` scripts
+** `namespace`
+** `repository`
+** `label_group`
+** `container_name`

@@ -14,6 +14,9 @@ Sebastian Davids <sdavids@gmx.de>
 :hide-uri-scheme:
 :source-highlighter: rouge
 :rouge-style: github
+// Refs:
+:docker-install-url: https://docs.docker.com/install/
+:rust-install-url: https://www.rust-lang.org/tools/install
 
 ifdef::env-browser[:outfilesuffix: .adoc]
 
@@ -198,6 +201,29 @@ $ scripts/git_cleanup.sh -e now
 
 . Your project is ready to go 🎉
 
+== Development
+
+=== Build
+
+[,console]
+----
+$ scripts/build.sh
+----
+
+=== Format Source Code
+
+[,console]
+----
+$ scripts/format.sh
+----
+
+=== Lint Source Code
+
+[,console]
+----
+$ scripts/.sh
+----
+
 == Development Environment Setup
 
 [IMPORTANT]
@@ -212,6 +238,26 @@ $ git config set core.hooksPath .githooks
 
 [#dev-env-installation]
 === Installation
+
+==== Docker
+
+Install {docker-install-url}[Docker].
+
+===== Mac
+
+[,console]
+----
+$ brew install gh
+----
+
+==== Rust
+
+Install {rust-install-url}[Rust].
+
+[,console]
+----
+$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable --component rust-analyzer
+----
 
 ==== shellcheck
 
@@ -243,4 +289,30 @@ $ sudo apt-get install shfmt
 [,console]
 ----
 $ brew install shfmt
+----
+
+==== yamllint
+
+===== Linux
+
+Install https://github.com/hadolint/hadolint?tab=readme-ov-file#install[hadolint].
+
+===== Mac
+
+[,console]
+----
+$ brew install yamllint
+----
+
+==== hadolint
+
+===== Linux
+
+docs: hadolint is not available in Debian repos
+
+===== Mac
+
+[,console]
+----
+$ brew install hadolint
 ----
