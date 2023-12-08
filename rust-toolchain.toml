@@ -1,0 +1,7 @@
+# SPDX-FileCopyrightText: © 2024 Sebastian Davids <sdavids@gmx.de>
+# SPDX-License-Identifier: Apache-2.0
+
+[toolchain]
+channel = "stable-2024-10-17"
+components = ["clippy", "rustfmt"]
+profile = "minimal"
