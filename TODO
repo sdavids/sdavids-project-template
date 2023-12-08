@@ -13,11 +13,36 @@ Sebastian Davids <sdavids@gmx.de>
 * Add meaningful content to `README.adoc`
 
 // -
+* Update `Cargo.toml`
+** bin.name
+** package.name
+** categories
+** description
+** keywords
+
+//-
+* Update `Dockerfile`
+** name of binary passed to upx
+** name of `COPY` binary
+** `LABEL`
+*** `org.opencontainers.image.title`
+*** `de.sdavids.docker.group`
+
+// -
+* Update `scripts/docker_*.sh` scripts
+** `namespace`
+** `repository`
+** `label_group`
+** `container_name`
+
+//-
 * Different license?
 ** update `LICENSE`
 ** `:uri-apache-license:` and `License` in `README.adoc`
 ** `:uri-apache-license:` and `Project License` in `CONTRIBUTING.adoc`
 ** `SPDX-License-Identifier` comment in files
+** `Cargo.toml` - `license`
+** `Dockerfile` - `org.opencontainers.image.licenses`
 
 // -
 * Different security policy?

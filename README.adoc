@@ -15,6 +15,8 @@ Sebastian Davids <sdavids@gmx.de>
 :source-highlighter: rouge
 :rouge-style: github
 // Refs:
+:docker-install-url: https://docs.docker.com/install/
+:rust-install-url: https://www.rust-lang.org/tools/install
 :uri-apache-license: https://www.apache.org/licenses/LICENSE-2.0
 :uri-contributor-covenant: https://www.contributor-covenant.org
 :uri-google-style: https://github.com/google/gts
@@ -159,6 +161,29 @@ $ scripts/git_cleanup.sh -e now
 
 . Your project is ready to go 🎉
 
+== Development
+
+=== Build
+
+[,console]
+----
+$ scripts/build.sh
+----
+
+=== Format Source Code
+
+[,console]
+----
+$ scripts/format.sh
+----
+
+=== Lint Source Code
+
+[,console]
+----
+$ scripts/.sh
+----
+
 == License
 
 Apache License, Version 2.0 (link:LICENSES/Apache-2.0.txt[Apache-2.0.txt] or {uri-apache-license}).
@@ -195,6 +220,26 @@ $ git set config blame.ignoreRevsFile .git-blame-ignore-revs
 [#dev-env-installation]
 === Installation
 
+==== Docker
+
+Install {docker-install-url}[Docker].
+
+===== Mac
+
+[,console]
+----
+$ brew install gh
+----
+
+==== Rust
+
+Install {rust-install-url}[Rust].
+
+[,console]
+----
+$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable --component rust-analyzer
+----
+
 ==== shellcheck
 
 ===== Linux
@@ -225,6 +270,32 @@ $ sudo apt-get install shfmt
 [,console]
 ----
 $ brew install shfmt
+----
+
+==== yamllint
+
+===== Linux
+
+Install https://github.com/hadolint/hadolint?tab=readme-ov-file#install[hadolint].
+
+===== Mac
+
+[,console]
+----
+$ brew install yamllint
+----
+
+==== hadolint
+
+===== Linux
+
+docs: hadolint is not available in Debian repos
+
+===== Mac
+
+[,console]
+----
+$ brew install hadolint
 ----
 
 [#ide]
