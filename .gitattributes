@@ -11,3 +11,8 @@
 
 *.adoc linguist-documentation
 *.sh diff=bash
+
+*.rs diff=rust
+
+Cargo.lock linguist-generated=true
+.cargo-checksum.json linguist-generated=true

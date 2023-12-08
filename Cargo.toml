@@ -1,0 +1,33 @@
+# SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+# SPDX-License-Identifier: Apache-2.0
+
+# https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[workspace]
+resolver = "3"
+
+[package]
+name = "sdavids-project-template"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.88.0"
+authors = ["Sebastian Davids <sdavids@gmx.de>"]
+# description = ""
+homepage = "https://github.com/sdavids/sdavids-project-template"
+repository = "https://github.com/sdavids/sdavids-project-template"
+readme = "README.adoc"
+# keywords = [""]
+# categories = [""]
+license = "Apache-2.0"
+publish = false
+
+[[bin]]
+name = "sdavids-project-template"
+path = "src/main.rs"
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
+opt-level = "s"
+strip = "symbols"

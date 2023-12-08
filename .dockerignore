@@ -1,0 +1,10 @@
+# SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+# SPDX-License-Identifier: Apache-2.0
+
+# https://docs.docker.com/build/building/context/#dockerignore-files
+
+*
+!Cargo.lock
+!Cargo.toml
+!rust-toolchain.toml
+!src/
