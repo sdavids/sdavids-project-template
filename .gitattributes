@@ -12,3 +12,8 @@
 *.adoc linguist-documentation
 *.md whitespace=tab-in-indent,tabwidth=2 diff=markdown linguist-documentation
 *.sh diff=bash
+
+*.rs diff=rust
+
+Cargo.lock linguist-generated=true
+.cargo-checksum.json linguist-generated=true
