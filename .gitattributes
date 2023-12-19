@@ -11,3 +11,6 @@
 
 *.adoc linguist-documentation
 *.sh diff=bash
+
+*.css diff=css
+*.html diff=html
