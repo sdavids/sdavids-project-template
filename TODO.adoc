@@ -11,3 +11,23 @@ Sebastian Davids <sdavids@gmx.de>
 * Update `:description:` in `README.adoc`
 * Remove the _Using This Template Repository_ section from `README.adoc`
 * Add meaningful content to `README.adoc`
+
+// -
+* Update `package.json`
+** remove `bugs` if project does not support issues
+** `description`
+** `version`
+
+//-
+* Update `Dockerfile`
+** `LABEL`
+*** `org.opencontainers.image.title`
+*** `de.sdavids.docker.group`
+
+// -
+* Update `scripts/docker_*.sh` scripts
+** `namespace`
+** `repository`
+** `label_group`
+** `container_name`
+** `network_name`

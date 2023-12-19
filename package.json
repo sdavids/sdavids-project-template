@@ -1,0 +1,64 @@
+{
+  "name": "sdavids-project-template",
+  "description": "",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "contributors": [
+    "Sebastian Davids <sdavids@gmx.de>"
+  ],
+  "homepage": "https://github.com/sdavids/sdavids-project-template",
+  "bugs": "https://github.com/sdavids/sdavids-project-template/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sdavids/sdavids-project-template.git"
+  },
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.13.1",
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">= 22.17"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "10.13.1"
+    }
+  },
+  "devDependencies": {
+    "@eslint/css": "0.9.0",
+    "@eslint/js": "9.30.1",
+    "@eslint/json": "0.12.0",
+    "browser-sync": "3.0.4",
+    "browserslist": "4.25.1",
+    "browserslist-config-baseline": "0.4.0",
+    "eslint": "9.30.1",
+    "eslint-plugin-compat": "6.0.2",
+    "eslint-plugin-depend": "1.2.0",
+    "eslint-plugin-import-x": "4.16.1",
+    "globals": "16.3.0",
+    "husky": "9.1.7",
+    "lint-staged": "16.1.2",
+    "prettier": "3.6.2",
+    "typescript": "5.8.3"
+  },
+  "scripts": {
+    "prepare": "node .husky/install.mjs",
+    "check-types": "tsc --project jsconfig.prod.json",
+    "docker-build": "scripts/docker_build.sh",
+    "docker-cleanup": "scripts/docker_cleanup.sh",
+    "docker-health": "scripts/docker_health.sh",
+    "docker-remove": "scripts/docker_remove.sh",
+    "docker-start": "scripts/docker_start.sh",
+    "docker-stop": "scripts/docker_stop.sh",
+    "dev": "browser-sync ./src -f ./src --no-notify --no-ghost-mode",
+    "format": "prettier --cache --write .",
+    "format-check": "prettier --cache --check .",
+    "hash-filename": "scripts/hash_filename.sh",
+    "lint": "eslint --cache --cache-location node_modules/.cache/eslint/ --max-warnings 0 .",
+    "lint-fix": "eslint --cache --cache-location node_modules/.cache/eslint/ --fix ."
+  },
+  "browserslist": [
+    "extends browserslist-config-baseline"
+  ]
+}

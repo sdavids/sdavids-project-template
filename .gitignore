@@ -41,3 +41,12 @@ jffi*.dylib
 
 ### direnv files ###
 .envrc
+
+### NodeJS ###
+node_modules/
+
+### pnpm ###
+.pnpm-store/
+
+### husky ###
+.husky/_/

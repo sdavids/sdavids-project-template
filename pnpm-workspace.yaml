@@ -1,0 +1,12 @@
+---
+# SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+# SPDX-License-Identifier: Apache-2.0
+
+# https://pnpm.io/pnpm-workspace_yaml
+
+useNodeVersion: 22.17.0
+engineStrict: true
+savePrefix: ""
+ignoreScripts: false
+onlyBuiltDependencies:
+  - unrs-resolver

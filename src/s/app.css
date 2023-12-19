@@ -1,0 +1,34 @@
+/*
+ * SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+@import url(https://unpkg.com/modern-normalize@3.0.1/modern-normalize.css);
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  block-size: 100dvb;
+}
+
+body,
+html,
+:host {
+  font-family:
+    /* eslint-disable-next-line css/use-baseline */
+    ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans",
+    "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family:
+    /* eslint-disable-next-line css/use-baseline */
+    ui-monospace, SFMono-Regular, Consolas, "Roboto Mono", Menlo, Monaco,
+    "Liberation Mono", "Courier New", monospace;
+}
