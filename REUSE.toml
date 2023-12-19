@@ -6,3 +6,23 @@ version = 1
 SPDX-PackageName = "sdavids-project-template"
 SPDX-PackageSupplier = "Sebastian Davids <sdavids@gmx.de>"
 SPDX-PackageDownloadLocation = "https://github.com/sdavids/sdavids-project-template"
+
+[[annotations]]
+path = [".devcontainer/devcontainer-lock.json"]
+SPDX-FileCopyrightText = "© 2025 Sebastian Davids <sdavids@gmx.de>"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["package.json"]
+SPDX-FileCopyrightText = "© 2025 Sebastian Davids <sdavids@gmx.de>"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["pnpm-lock.yaml"]
+SPDX-FileCopyrightText = "© 2025 Sebastian Davids <sdavids@gmx.de>"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["jsconfig.json", "jsconfig.prod.json"]
+SPDX-FileCopyrightText = "© 2025 Sebastian Davids <sdavids@gmx.de>"
+SPDX-License-Identifier = "Apache-2.0"
