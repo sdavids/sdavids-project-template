@@ -1,0 +1,24 @@
+{
+  "features": {
+    "ghcr.io/devcontainers-extra/features/shfmt:1.0.2": {
+      "version": "1.0.2",
+      "resolved": "ghcr.io/devcontainers-extra/features/shfmt@sha256:9d87bdd69e7b37554488291e79b37a40d1e18beddfa151454570d5bf72423df8",
+      "integrity": "sha256:9d87bdd69e7b37554488291e79b37a40d1e18beddfa151454570d5bf72423df8"
+    },
+    "ghcr.io/devcontainers-extra/features/yamllint:2.0.18": {
+      "version": "2.0.18",
+      "resolved": "ghcr.io/devcontainers-extra/features/yamllint@sha256:c3ed260f8e4f026d2ae93ae61581d9a8c28d64950a4e801ac33b968566e6c16e",
+      "integrity": "sha256:c3ed260f8e4f026d2ae93ae61581d9a8c28d64950a4e801ac33b968566e6c16e"
+    },
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1.6.4": {
+      "version": "1.6.4",
+      "resolved": "ghcr.io/devcontainers/features/docker-outside-of-docker@sha256:97a487a5ba0ed29a3532d6fb07ebef603e5e6a366ce8b3de0a208fce953a4779",
+      "integrity": "sha256:97a487a5ba0ed29a3532d6fb07ebef603e5e6a366ce8b3de0a208fce953a4779"
+    },
+    "ghcr.io/dhoeric/features/hadolint:1.0.0": {
+      "version": "1.0.0",
+      "resolved": "ghcr.io/dhoeric/features/hadolint@sha256:993e7e6f14b7f53aafefb081eb8396ea08f3d48aebb23c91fbaa10651ca0a835",
+      "integrity": "sha256:993e7e6f14b7f53aafefb081eb8396ea08f3d48aebb23c91fbaa10651ca0a835"
+    }
+  }
+}

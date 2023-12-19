@@ -14,11 +14,15 @@ Sebastian Davids <sdavids@gmx.de>
 :hide-uri-scheme:
 :source-highlighter: rouge
 :rouge-style: github
+// Refs:
+:docker-install-url: https://docs.docker.com/install/
+:pnpm-install-url: https://pnpm.io/installation
 
 ifdef::env-browser[:outfilesuffix: .adoc]
 
 ifdef::env-github[]
 :outfilesuffix: .adoc
+:note-caption: :information_source:
 :important-caption: :heavy_exclamation_mark:
 :tip-caption: :bulb:
 :warning-caption: :warning:
@@ -145,11 +149,11 @@ $ rm scripts/git_delete_branches.sh
 
 . <<dev-env-installation,Install>> the development environment setup.
 
-. Initialize the Git hooks:
+. Install the dependencies:
 +
 [,console]
 ----
-$ git config set core.hooksPath .githooks
+$ pnpm install
 ----
 
 . Do the link:TODO[TODOs]; delete the file afterward:
@@ -198,20 +202,72 @@ $ scripts/git_cleanup.sh -e now
 
 . Your project is ready to go 🎉
 
-== Development Environment Setup
+== Development
 
-[IMPORTANT]
-====
-After initializing this repository, you need to install the Git hooks via:
+=== Format Source Code
 
 [,console]
 ----
-$ git config set core.hooksPath .githooks
+$ pnpm run format
 ----
-====
+
+=== Lint Source Code
+
+[,console]
+----
+$ pnpm run lint
+----
+
+== Development Environment Setup
 
 [#dev-env-installation]
 === Installation
+
+==== Docker
+
+Install {docker-install-url}[Docker].
+
+==== hadolint
+
+===== Linux
+
+Install https://github.com/hadolint/hadolint?tab=readme-ov-file#install[hadolint].
+
+===== Mac
+
+[,console]
+----
+$ brew install hadolint
+----
+
+==== husky
+This repository uses https://typicode.github.io/husky/[husky] for Git hooks.
+
+.~/.config/husky/init.sh
+[,shell]
+----
+#!/usr/bin/env sh
+
+# vim:ft=zsh
+
+# shellcheck shell=sh disable=SC1091
+
+set -eu
+
+[ -e /etc/zshenv ] && . /etc/zshenv
+[ -e "${ZDOTDIR:=${HOME}}/.zshenv" ] && . "${ZDOTDIR:=${HOME}}/.zshenv"
+[ -e /etc/zprofile ] && . /etc/zprofile
+[ -e "${ZDOTDIR:=${HOME}}/.zprofile" ] && . "${ZDOTDIR:=${HOME}}/.zprofile"
+[ -e /etc/zlogin ] && . /etc/zlogin
+[ -e "${ZDOTDIR:=${HOME}}/.zlogin" ] && . "${ZDOTDIR:=${HOME}}/.zlogin"
+----
+
+More information:
+https://typicode.github.io/husky/troubleshooting.html#command-not-found[Husky - Command not found]
+
+==== pnpm
+
+Install {pnpm-install-url}[pnpm].
 
 ==== shellcheck
 
@@ -243,4 +299,20 @@ $ sudo apt-get install shfmt
 [,console]
 ----
 $ brew install shfmt
+----
+
+==== yamllint
+
+===== Linux
+
+[,console]
+----
+$ sudo apt-get install yamllint
+----
+
+===== Mac
+
+[,console]
+----
+$ brew install yamllint
 ----
