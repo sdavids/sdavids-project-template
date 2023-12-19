@@ -21,3 +21,30 @@ max_line_length = off
 
 [*.toml]
 max_line_length = 80
+
+[*.yaml]
+max_line_length = 80
+
+[*.html]
+max_line_length = 80
+
+[*.css]
+max_line_length = 80
+
+[*.{js,mjs}]
+max_line_length = 80
+
+[*.json]
+max_line_length = 80
+
+[.devcontainer/devcontainer-lock.json]
+insert_final_newline = false
+
+[.pnpm-store]
+ignore = true
+
+[node_modules]
+ignore = true
+
+[.husky/_]
+ignore = true
