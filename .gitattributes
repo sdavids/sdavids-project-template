@@ -12,3 +12,8 @@
 *.adoc linguist-documentation
 *.md whitespace=tab-in-indent,tabwidth=2 diff=markdown linguist-documentation
 *.sh diff=bash
+
+*.css diff=css
+*.html diff=html
+
+package-lock.json linguist-generated=true

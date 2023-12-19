@@ -1,0 +1,65 @@
+{
+  "name": "sdavids-project-template",
+  "description": "",
+  "version": "0.0.1",
+  "license": "Apache-2.0",
+  "contributors": [
+    "Sebastian Davids <sdavids@gmx.de>"
+  ],
+  "homepage": "https://github.com/sdavids/sdavids-project-template",
+  "bugs": "https://github.com/sdavids/sdavids-project-template/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sdavids/sdavids-project-template.git"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "preinstall": "scripts/macos_node_modules_fix.sh",
+    "prepare": "scripts/prepare.sh",
+    "check:types": "tsc --project jsconfig.prod.json",
+    "clean": "scripts/clean.sh",
+    "clean:node": "scripts/clean_node.sh",
+    "dependency:updates": "scripts/dependency_check_node.sh",
+    "docker:build": "scripts/docker_build.sh",
+    "docker:cleanup": "scripts/docker_cleanup.sh",
+    "docker:health": "scripts/docker_health.sh",
+    "docker:remove": "scripts/docker_remove.sh",
+    "docker:start": "scripts/docker_start.sh",
+    "docker:stop": "scripts/docker_stop.sh",
+    "dev": "scripts/dev.sh",
+    "format": "scripts/format.sh",
+    "format:check": "scripts/format_check.sh",
+    "hash:filename": "scripts/hash_filename.sh",
+    "lint": "scripts/lint.sh",
+    "lint:fix": "scripts/lint_fix.sh"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "19.8.0",
+    "@commitlint/config-conventional": "19.8.0",
+    "@eslint/css": "0.5.0",
+    "@eslint/js": "9.22.0",
+    "@eslint/json": "0.11.0",
+    "@eslint/markdown": "6.3.0",
+    "browser-sync": "3.0.3",
+    "browserslist": "4.24.4",
+    "eslint": "9.22.0",
+    "eslint-plugin-compat": "6.0.2",
+    "globals": "16.0.0",
+    "husky": "9.1.7",
+    "is-ci": "4.1.0",
+    "lint-staged": "15.5.0",
+    "prettier": "3.5.3",
+    "typescript": "5.8.2"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">= 22.14"
+    },
+    "packageManager": {
+      "name": "npm",
+      "version": ">= 10.9"
+    }
+  }
+}
