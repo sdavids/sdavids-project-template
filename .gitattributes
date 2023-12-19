@@ -11,3 +11,8 @@
 
 *.adoc linguist-documentation
 *.sh diff=bash
+
+*.css diff=css
+*.html diff=html
+
+package-lock.json linguist-generated=true

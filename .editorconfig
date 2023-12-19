@@ -18,3 +18,18 @@ max_line_length = 80
 
 [*.adoc]
 max_line_length = off
+
+[*.yaml]
+max_line_length = 80
+
+[*.html]
+max_line_length = 80
+
+[*.css]
+max_line_length = 80
+
+[*.{js,mjs}]
+max_line_length = 80
+
+[*.json]
+max_line_length = 80
