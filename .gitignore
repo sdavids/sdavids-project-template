@@ -40,3 +40,9 @@ jffi*.dylib
 
 ### direnv files ###
 .envrc
+
+### NodeJS ###
+node_modules/
+
+### ESLint ###
+.eslintcache

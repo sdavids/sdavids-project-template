@@ -1,0 +1,38 @@
+# SPDX-FileCopyrightText: © 2024 Sebastian Davids <sdavids@gmx.de>
+# SPDX-License-Identifier: Apache-2.0
+
+# https://docs.docker.com/build/building/context/#dockerignore-files
+
+*.adoc
+*.md
+*.swp
+.DS_Store
+.browserslistrc
+.dockerignore
+.editorconfig
+.git-blame-ignore-revs
+.gitattributes
+.gitignore
+.hadolint.yaml
+.nvmrc
+.prettierignore
+.yamllint.yaml
+Dockerfile
+OSSMETADATA
+REUSE.toml
+Thumbs.db
+TODO
+commitlint.config.mjs
+eslint.config.mjs
+lint-staged.config.mjs
+prettier.config.mjs
+.fleet/
+.git/
+.githooks/
+.github/
+.idea/
+.reuse/
+.vscode/
+LICENSES/
+scripts/
+target/
