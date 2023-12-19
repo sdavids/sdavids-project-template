@@ -14,11 +14,16 @@ Sebastian Davids <sdavids@gmx.de>
 :hide-uri-scheme:
 :source-highlighter: rouge
 :rouge-style: github
+// Refs:
+:docker-install-url: https://docs.docker.com/install/
+:fnm-install-url: https://github.com/Schniz/fnm#installation
+:nvm-install-url: https://github.com/nvm-sh/nvm#installing-and-updating
 
 ifdef::env-browser[:outfilesuffix: .adoc]
 
 ifdef::env-github[]
 :outfilesuffix: .adoc
+:note-caption: :information_source:
 :important-caption: :heavy_exclamation_mark:
 :tip-caption: :bulb:
 :warning-caption: :warning:
@@ -145,11 +150,27 @@ $ rm scripts/git_delete_branches.sh
 
 . <<dev-env-installation,Install>> the development environment setup.
 
-. Initialize the Git hooks:
+. Set up the Node.js runtime:
++
+.. {fnm-install-url}[fnm]
 +
 [,console]
 ----
-$ git config set core.hooksPath .githooks
+$ fnm use
+----
++
+.. {nvm-install-url}[NVM]
++
+[,console]
+----
+$ nvm use
+----
+
+. Install the dependencies:
++
+[,console]
+----
+$ npm i --no-ignore-scripts
 ----
 
 . Do the link:TODO[TODOs]; delete the file afterward:
@@ -198,20 +219,147 @@ $ scripts/git_cleanup.sh -e now
 
 . Your project is ready to go 🎉
 
-== Development Environment Setup
+== Development
 
-[IMPORTANT]
-====
-After initializing this repository, you need to install the Git hooks via:
+=== Format Source Code
 
 [,console]
 ----
-$ git config set core.hooksPath .githooks
+$ node --run format
 ----
-====
+
+=== Lint Source Code
+
+[,console]
+----
+$ node --run lint
+----
+
+== Development Environment Setup
 
 [#dev-env-installation]
 === Installation
+
+==== Docker
+
+Install {docker-install-url}[Docker].
+
+==== hadolint
+
+===== Linux
+
+Install https://github.com/hadolint/hadolint?tab=readme-ov-file#install[hadolint].
+
+===== Mac
+
+[,console]
+----
+$ brew install hadolint
+----
+
+==== Node Version Manager
+
+Install {fnm-install-url}[fnm] or {nvm-install-url}[NVM].
+
+[NOTE]
+====
+This repository uses https://typicode.github.io/husky/[husky] for Git hooks.
+
+More information:
+https://typicode.github.io/husky/troubleshooting.html#command-not-found[Husky - Command not found]
+====
+
+[#fnm]
+===== fnm
+
+.~/.zprofile
+[,zsh]
+----
+if command -v fnm > /dev/null 2>&1; then
+  eval "$(fnm env --use-on-cd)"
+fi
+----
+
+.~/.config/husky/init.sh
+[,shell]
+----
+#!/usr/bin/env sh
+
+# vim:ft=zsh
+
+# shellcheck shell=sh disable=SC1091
+
+set -eu
+
+[ -e /etc/zshenv ] && . /etc/zshenv
+[ -e "${ZDOTDIR:=${HOME}}/.zshenv" ] && . "${ZDOTDIR:=${HOME}}/.zshenv"
+[ -e /etc/zprofile ] && . /etc/zprofile
+[ -e "${ZDOTDIR:=${HOME}}/.zprofile" ] && . "${ZDOTDIR:=${HOME}}/.zprofile"
+[ -e /etc/zlogin ] && . /etc/zlogin
+[ -e "${ZDOTDIR:=${HOME}}/.zlogin" ] && . "${ZDOTDIR:=${HOME}}/.zlogin"
+----
+
+[#nvm]
+===== nvm
+
+.~/.zshrc
+[,zsh]
+----
+export NVM_DIR="${HOME}/.nvm"
+
+[ -s "${NVM_DIR}/nvm.sh" ] && . "${NVM_DIR}/nvm.sh"
+[ -s "${NVM_DIR}/bash_completion" ] && . "${NVM_DIR}/bash_completion"
+
+if command -v nvm > /dev/null 2>&1; then
+  autoload -U add-zsh-hook
+  load-nvmrc() {
+    local nvmrc_path="$(nvm_find_nvmrc)"
+    if [ -n "${nvmrc_path}" ]; then
+      local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+      if [ "${nvmrc_node_version}" = "N/A" ]; then
+        nvm install
+      elif [ "${nvmrc_node_version}" != "$(nvm version)" ]; then
+        nvm use
+      fi
+    elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
+      echo 'Reverting to nvm default version'
+      nvm use default
+    fi
+  }
+
+  add-zsh-hook chpwd load-nvmrc
+  load-nvmrc
+fi
+----
+
+.~/.config/husky/init.sh
+[,shell]
+----
+#!/usr/bin/env sh
+
+# vim:ft=zsh
+
+# shellcheck shell=sh disable=SC1091
+
+set -eu
+
+[ -e /etc/zshenv ] && . /etc/zshenv
+[ -e "${ZDOTDIR:=${HOME}}/.zshenv" ] && . "${ZDOTDIR:=${HOME}}/.zshenv"
+[ -e /etc/zprofile ] && . /etc/zprofile
+[ -e "${ZDOTDIR:=${HOME}}/.zprofile" ] && . "${ZDOTDIR:=${HOME}}/.zprofile"
+[ -e /etc/zlogin ] && . /etc/zlogin
+[ -e "${ZDOTDIR:=${HOME}}/.zlogin" ] && . "${ZDOTDIR:=${HOME}}/.zlogin"
+
+export NVM_DIR="${HOME}/.nvm"
+
+if [ -f "${NVM_DIR}/nvm.sh" ]; then
+  . "${NVM_DIR}/nvm.sh"
+
+  if [ -f '.nvmrc' ]; then
+    nvm use
+  fi
+fi
+----
 
 ==== shellcheck
 
@@ -243,4 +391,20 @@ $ sudo apt-get install shfmt
 [,console]
 ----
 $ brew install shfmt
+----
+
+==== yamllint
+
+===== Linux
+
+[,console]
+----
+$ sudo apt-get install yamllint
+----
+
+===== Mac
+
+[,console]
+----
+$ brew install yamllint
 ----

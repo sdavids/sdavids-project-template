@@ -1,0 +1,67 @@
+{
+  "name": "sdavids-project-template",
+  "description": "",
+  "version": "0.0.1",
+  "license": "Apache-2.0",
+  "contributors": [
+    "Sebastian Davids <sdavids@gmx.de>"
+  ],
+  "homepage": "https://github.com/sdavids/sdavids-project-template",
+  "bugs": "https://github.com/sdavids/sdavids-project-template/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sdavids/sdavids-project-template.git"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "preinstall": "scripts/macos_node_modules_fix.sh",
+    "prepare": "scripts/prepare.sh",
+    "check:types": "tsc --project jsconfig.prod.json",
+    "clean": "scripts/clean.sh",
+    "clean:node": "scripts/clean_node.sh",
+    "dependency:updates": "scripts/dependency_check_node.sh",
+    "docker:build": "scripts/docker_build.sh",
+    "docker:cleanup": "scripts/docker_cleanup.sh",
+    "docker:health": "scripts/docker_health.sh",
+    "docker:remove": "scripts/docker_remove.sh",
+    "docker:start": "scripts/docker_start.sh",
+    "docker:stop": "scripts/docker_stop.sh",
+    "dev": "scripts/dev.sh",
+    "format": "scripts/format.sh",
+    "format:check": "scripts/format_check.sh",
+    "hash:filename": "scripts/hash_filename.sh",
+    "lint": "scripts/lint.sh",
+    "lint:fix": "scripts/lint_fix.sh"
+  },
+  "devDependencies": {
+    "@eslint/css": "0.8.1",
+    "@eslint/js": "9.27.0",
+    "@eslint/json": "0.12.0",
+    "browser-sync": "3.0.4",
+    "browserslist": "4.24.5",
+    "browserslist-config-baseline": "0.4.0",
+    "eslint": "9.27.0",
+    "eslint-plugin-compat": "6.0.2",
+    "eslint-plugin-depend": "1.2.0",
+    "eslint-plugin-import-x": "4.11.1",
+    "globals": "16.1.0",
+    "husky": "9.1.7",
+    "lint-staged": "16.0.0",
+    "prettier": "3.5.3",
+    "typescript": "5.8.3"
+  },
+  "browserslist": [
+    "extends browserslist-config-baseline"
+  ],
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">= 22.15"
+    },
+    "packageManager": {
+      "name": "npm",
+      "version": ">= 10.9"
+    }
+  }
+}
