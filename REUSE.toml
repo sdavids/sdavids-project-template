@@ -11,3 +11,13 @@ SPDX-PackageDownloadLocation = "https://github.com/sdavids/sdavids-project-templ
 path = "OSSMETADATA"
 SPDX-FileCopyrightText = "© 2025 Sebastian Davids <sdavids@gmx.de>"
 SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = "**.json"
+SPDX-FileCopyrightText = "© 2025 Sebastian Davids <sdavids@gmx.de>"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ".nvmrc"
+SPDX-FileCopyrightText = "© 2025 Sebastian Davids <sdavids@gmx.de>"
+SPDX-License-Identifier = "Apache-2.0"
