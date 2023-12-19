@@ -18,6 +18,26 @@ Sebastian Davids <sdavids@gmx.de>
 ** `:uri-apache-license:` and `License` in `README.adoc`
 ** `:uri-apache-license:` and `Project License` in `CONTRIBUTING.adoc`
 ** `SPDX-License-Identifier` comment in files
+** `Dockerfile` - `org.opencontainers.image.licenses`
+** `package.json` - `license`
+
+// -
+* Update `package.json`
+** remove `bugs` if project does not support issues
+** `description`
+
+//-
+* Update `Dockerfile`
+** `LABEL`
+*** `org.opencontainers.image.title`
+*** `de.sdavids.docker.group`
+
+// -
+* Update `scripts/docker_*.sh` scripts
+** `namespace`
+** `repository`
+** `label_group`
+** `container_name`
 
 // -
 * Different security policy?

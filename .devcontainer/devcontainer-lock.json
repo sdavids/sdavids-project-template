@@ -1,0 +1,19 @@
+{
+  "features": {
+    "ghcr.io/devcontainers-extra/features/apt-get-packages:1.0.7": {
+      "version": "1.0.7",
+      "resolved": "ghcr.io/devcontainers-extra/features/apt-get-packages@sha256:95b186432c782c4a71433c0961d5d1cec6cd5cb2a22542287e09714799bab6b2",
+      "integrity": "sha256:95b186432c782c4a71433c0961d5d1cec6cd5cb2a22542287e09714799bab6b2"
+    },
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1.6.0": {
+      "version": "1.6.0",
+      "resolved": "ghcr.io/devcontainers/features/docker-outside-of-docker@sha256:63dc56535ecaed989f2e6c8ca04acb5012999cd0e19f125504350b2e075b0c2c",
+      "integrity": "sha256:63dc56535ecaed989f2e6c8ca04acb5012999cd0e19f125504350b2e075b0c2c"
+    },
+    "ghcr.io/dhoeric/features/hadolint:1.0.0": {
+      "version": "1.0.0",
+      "resolved": "ghcr.io/dhoeric/features/hadolint@sha256:993e7e6f14b7f53aafefb081eb8396ea08f3d48aebb23c91fbaa10651ca0a835",
+      "integrity": "sha256:993e7e6f14b7f53aafefb081eb8396ea08f3d48aebb23c91fbaa10651ca0a835"
+    }
+  }
+}
