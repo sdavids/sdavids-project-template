@@ -21,3 +21,6 @@ max_line_length = off
 
 [*.toml]
 max_line_length = 80
+
+[*.{cls,tex}]
+max_line_length = off
