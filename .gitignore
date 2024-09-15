@@ -40,3 +40,7 @@ jffi*.dylib
 
 ### direnv files ###
 .envrc
+
+### LaTeX
+*.pdf
+build/

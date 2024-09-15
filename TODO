@@ -13,6 +13,19 @@ Sebastian Davids <sdavids@gmx.de>
 * Add meaningful content to `README.adoc`
 
 // -
+* Add meaningful content to `src/main.tex`
+
+// -
+* Change fonts:
+** `src/main.tex`: `\setmainfont{Lora}`,  `\setsansfont{Nunito}`, and  `\setmonofont{JetBrainsMono}`
+** `src/fonts`: `Lora-**`, `Nunito-**`, and `JetBrainsMono-**`
+** `REUSE.toml`: `src/fonts/Lora-**`, `src/fonts/Nunito-**`, and `src/fonts/JetBrainsMono-**`
+
+//-
+* Include PDFs?
+** `.gitignore` add exclusion after `\*.pdf`, e.g. `!src/includepdf/**/*.pdf`
+
+// -
 * Different license?
 ** update `LICENSE`
 ** `:uri-apache-license:` and `License` in `README.adoc`
