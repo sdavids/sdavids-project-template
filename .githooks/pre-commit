@@ -19,6 +19,13 @@
 #   Linux:
 #     sudo apt-get install shfmt
 
+# yamllint needs to be in $PATH
+# https://yamllint.readthedocs.io/en/stable/
+#   Mac:
+#     brew install yamllint
+#   Linux:
+#     sudo apt-get install yamllint
+
 set -eu
 
 if [ -z "${GIT_REFLOG_ACTION+x}" ]; then
@@ -46,4 +53,9 @@ if command -v shfmt >/dev/null 2>&1; then
   if command -v shellcheck >/dev/null 2>&1; then
     { shfmt -l=0 . | xargs -0L1 shellcheck; } >&2
   fi
+fi
+
+if command -v yamllint >/dev/null 2>&1; then
+  # https://yamllint.readthedocs.io/en/stable/quickstart.html#running-yamllint
+  yamllint --strict . >&2
 fi
