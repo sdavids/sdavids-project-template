@@ -1,0 +1,41 @@
+// SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+// SPDX-License-Identifier: Apache-2.0
+= sdavids-project-template Container Diagram
+Sebastian Davids <sdavids@gmx.de>
+// Metadata:
+:description: sdavids-project-template container diagram
+// Settings:
+:sectnums:
+:sectanchors:
+:sectlinks:
+:toc: macro
+:toc-placement!:
+
+toc::[]
+
+== Container Diagram
+
+https://c4model.com/#ContainerDiagram[Container Diagram] for _sdavids-project-template_.
+
+[plantuml]
+----
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+
+Person(p, "Support")
+
+System_Boundary(s, "Test System") {
+  Container(c, "Test Container")
+}
+
+Rel(p, s, "uses")
+
+@enduml
+----
+
+== Systems
+
+=== Test
+
+include::_includes/system-test.adoc[]

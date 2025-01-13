@@ -1,0 +1,186 @@
+// SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+// SPDX-License-Identifier: Apache-2.0
+= sdavids-project-template
+Sebastian Davids <sdavids@gmx.de>
+// Metadata:
+:description: sdavids-project-template documentation
+// Settings:
+:sectnums:
+:sectanchors:
+:sectlinks:
+:toc: macro
+:toc-placement!:
+:hide-uri-scheme:
+:source-highlighter: rouge
+:rouge-style: github
+
+ifdef::env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+== Prerequisites
+
+Ensure that you are in the documentation directory:
+
+[,console]
+----
+$ cd docs
+----
+
+=== Create HTML Documentation
+
+One can build the HTML documentation via:
+
+[,console]
+----
+$ scripts/asciidoc_html_build.sh -s src/docs/asciidoc -o build/html
+----
+
+=> `build/html/index.html`
+
+=== Create PDF Documentation
+
+One can build the PDF documentation via:
+
+[,console]
+----
+$ scripts/asciidoc_pdf_build.sh -s src/docs/asciidoc -o build/pdf
+----
+
+=> `build/pdf/index.pdf`
+
+=== Remove Metadata From PDF
+
+[,console]
+----
+$ scripts/pdf_remove_metadata.sh build/pdf/index.pdf
+----
+
+=> `build/pdf/index.pdf`
+
+=== Change Fonts
+
+[IMPORTANT]
+====
+Ensure that you have https://www.fontfabric.com/blog/fonts-licensing-the-ins-and-outs-of-legally-using-fonts/#personal-commercial-projects[proper licenses] for the new fonts.
+
+Having a `ttf`-file does not equate to having a license to use it.
+
+Having a license for a font does not automatically mean that it can be used for https://www.fontfabric.com/blog/fonts-licensing-the-ins-and-outs-of-legally-using-fonts/#font-licensing-examples[all usages] (e.g. Desktop, Webfonts, or ePub).
+
+So be careful when you use fonts supplied with software you have installed (e.g. Microsoft Office or Adobe software).
+
+You have been warned!
+====
+
+To change the fonts used you have to do the following:
+
+. Add the new fonts to `src/docs/asciidoc/fonts`.
+. Change the fonts in `src/docs/asciidoc/themes/basic-theme.yml`:
++
+.src/docs/asciidoc/themes/basic-theme.yml
+[,yaml]
+----
+font:
+  catalog:
+    MPlus1mn: # only needed because the other fonts do not have circled numbers for callouts
+      normal: MPlus1mn-Regular.ttf
+      italic: MPlus1mn-Italic.ttf
+      bold: MPlus1mn-Bold.ttf
+      bold_italic: MPlus1mn-BoldItalic.ttf
+    SourceCodePro:
+      normal: SourceCodePro-Regular.ttf
+      italic: SourceCodePro-Italic.ttf
+      bold: SourceCodePro-Bold.ttf
+      bold_italic: SourceCodePro-BoldItalic.ttf
+    SourceSans3:
+      normal: SourceSans3-Regular.ttf
+      italic: SourceSans3-Italic.ttf
+      bold: SourceSans3-Bold.ttf
+      bold_italic: SourceSans3-BoldItalic.ttf
+    SourceSerif4:
+      normal: SourceSerif4-Regular.ttf
+      italic: SourceSerif4-Italic.ttf
+      bold: SourceSerif4-Bold.ttf
+      bold_italic: SourceSerif4-BoldItalic.ttf
+    NotoEmoji: NotoEmoji-Regular.ttf
+  fallbacks: [NotoEmoji]
+base:
+  font-family: SourceSerif4
+codespan:
+  font-family: SourceCodePro
+code:
+  font-family: SourceCodePro
+conum:
+  font-family: MPlus1mn
+heading:
+  font-family: SourceSans3
+kbd:
+  font-family: SourceCodePro
+title-page:
+  font-family: SourceSans3
+----
+. Change the fonts in `src/docs/asciidoc/themes/basic-plantuml.cfg`:
++
+.src/docs/asciidoc/themes/basic-plantuml.cfg
+[,text]
+----
+skinparam defaultFontName SourceSans3
+----
+
+. Delete the unused fonts from `src/docs/asciidoc/fonts`.
+
+. Declare the proper licenses in `REUSE.toml`:
++
+.REUSE.toml
+[,toml]
+----
+[[annotations]]
+path = "docs/src/docs/asciidoc/fonts/MPlus1mn-**"
+SPDX-FileCopyrightText = "© 2002-2019 The M+ FONTS Project Authors"
+SPDX-License-Identifier = "OFL-1.1"
+
+[[annotations]]
+path = "docs/src/docs/asciidoc/fonts/NotoEmoji-Regular.ttf"
+SPDX-FileCopyrightText = "© 2013 Google LLC"
+SPDX-License-Identifier = "OFL-1.1"
+
+[[annotations]]
+path = "docs/src/docs/asciidoc/fonts/SourceCodePro-**"
+SPDX-FileCopyrightText = "© 2010, 2012 Adobe Systems Incorporated (http://www.adobe.com/)"
+SPDX-License-Identifier = "OFL-1.1"
+
+[[annotations]]
+path = "docs/src/docs/asciidoc/fonts/SourceSans3-**"
+SPDX-FileCopyrightText = "© 2010-2020 Adobe (http://www.adobe.com/)"
+SPDX-License-Identifier = "OFL-1.1"
+
+[[annotations]]
+path = "docs/src/docs/asciidoc/fonts/SourceSerif4-**"
+SPDX-FileCopyrightText = "© 2014 - 2023 Adobe (http://www.adobe.com/)"
+SPDX-License-Identifier = "OFL-1.1"
+----
+
+== IDE Configuration
+
+=== JetBrains IDEs
+
+Install and enable the following plugins:
+
+* https://plugins.jetbrains.com/plugin/7391-asciidoc[AsciiDoc]
+
+Install _graphviz_:
+
+==== Linux
+
+[,console]
+----
+$ sudo apt-get install graphviz
+----
+
+==== Mac
+
+[,console]
+----
+$ brew install graphviz
+----
