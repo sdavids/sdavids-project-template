@@ -1,0 +1,32 @@
+// SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+// SPDX-License-Identifier: Apache-2.0
+= sdavids-project-template Architecture Overview
+Sebastian Davids <sdavids@gmx.de>
+// Metadata:
+:description: sdavids-project-template architecture overview
+// Settings:
+:sectnums:
+:sectanchors:
+:sectlinks:
+:toc: macro
+:toc-placement!:
+:hide-uri-scheme:
+
+ifdef::env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+== C4 Models
+
+=== System Context Diagrams
+
+* link:system-context/index{outfilesuffix}[sdavids-project-template]
+
+=== Container Diagrams
+
+* link:container/index{outfilesuffix}[sdavids-project-template]
+
+== More Information on C4
+
+* https://c4model.com[The C4 model for visualising software architecture]
+* Video: https://www.youtube.com/watch?v=x2-rSnhpw0g[Visualising software architecture with the C4 model]
