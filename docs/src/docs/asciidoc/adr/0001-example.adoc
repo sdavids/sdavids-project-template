@@ -1,0 +1,147 @@
+// SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+// SPDX-License-Identifier: Apache-2.0
+= 1. example
+Sebastian Davids <sdavids@gmx.de>
+// Metadata:
+:description: example
+// Settings:
+:sectnums:
+:sectanchors:
+:sectlinks:
+:toc: macro
+:toc-placement!:
+:hide-uri-scheme:
+:source-highlighter: rouge
+:rouge-style: github
+:docinfo: shared
+:docinfodir: ../docinfo
+
+ifdef::env-browser[:outfilesuffix: .adoc]
+
+ifdef::env-github[]
+:outfilesuffix: .adoc
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+
+Status: Proposed
+
+Deciders: Sebastian Davids
+
+Date: 2025-01-24
+
+Technical Story: <description | ticket/issue URL>
+
+== Context and Problem Statement
+
+<Describe the context and problem statement, e.g., in free form using two to
+three sentences. You may want to articulate the problem in form of a question.>
+
+== Decision Drivers
+
+* <driver 1, e.g., a force, facing concern, …>
+* <driver 2, e.g., a force, facing concern, …>
+* …
+
+== Considered Options
+
+* <<option1>>
+* <<option2>>
+* <<option3>>
+* …
+
+== Decision Outcome
+
+Chosen option: <"option 1", because justification. e.g., only option, which
+meets KO criterion decision driver | which resolves force | … | comes
+out best (see below).>
+
+=== Consequences
+
+* <e.g., improvement of quality attribute satisfaction, follow-up decisions
+required, …>
+* <e.g., compromising quality attribute, follow-up decisions required, …>
+* …
+
+== Options
+
+<List each option with its
+https://testing.googleblog.com/2023/09/communicate-design-tradeoffs-visually.html[qualities and tradeoffs].>
+
+[#option1]
+=== <option 1>
+
+<example | description | pointer to more information | …>
+
+* Quality 1
+[none]
+** [.green]#▲# <positive argument a>
+** ▶︎ <neutral argument b>
+** [.red]#▼# <negative argument c>
+
+* Quality 2
+[none]
+** [.green]#▲# <positive argument d>
+** ▶︎ <neutral argument b>
+** [.red]#▼# <negative argument f>
+
+[#option2]
+=== <option 2>
+
+<example | description | pointer to more information | …>
+
+* Quality 1
+[none]
+** [.green]#▲# <positive argument a>
+** …
+
+* Quality 2
+[none]
+** [.green]#▲# <positive argument b>
+** …
+
+[#option3]
+=== <option 3>
+
+<example | description | pointer to more information | …>
+
+* Quality 1
+[none]
+** [.green]#▲# <positive argument a>
+** …
+
+* Quality 2
+[none]
+** [.green]#▲# <positive argument b>
+** …
+
+== Notes
+
+* <Further information>
+* …
+
+== Links
+
+* <example: Refined by 0005-example.adoc[ADR-0005]>
+* …
+
+[NOTE]
+====
+Test
+====
+
+[,text,highlight=2..3;5]
+----
+A
+B
+C
+D
+E
+F
+G
+----
