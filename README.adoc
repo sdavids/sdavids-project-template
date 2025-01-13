@@ -15,6 +15,7 @@ Sebastian Davids <sdavids@gmx.de>
 :source-highlighter: rouge
 :rouge-style: github
 // Refs:
+:docker-install-url: https://docs.docker.com/install/
 :uri-apache-license: https://www.apache.org/licenses/LICENSE-2.0
 :uri-contributor-covenant: https://www.contributor-covenant.org
 :uri-google-style: https://github.com/google/gts
@@ -64,7 +65,7 @@ All branches of this repository will be force-pushed to--this is unfortunately n
 
 . Initialize a new repository from this template repository:
 +
-['shell]
+[,shell]
 ----
 $ gh repo create my-project --clone --template=sdavids/sdavids-project-template --private --include-all-branches
 $ cd my-project
@@ -159,6 +160,10 @@ $ scripts/git_cleanup.sh -e now
 
 . Your project is ready to go 🎉
 
+== Usage
+
+see link:docs/README.adoc[]
+
 == License
 
 Apache License, Version 2.0 (link:LICENSES/Apache-2.0.txt[Apache-2.0.txt] or {uri-apache-license}).
@@ -195,6 +200,44 @@ $ git set config blame.ignoreRevsFile .git-blame-ignore-revs
 [#dev-env-installation]
 === Installation
 
+==== Docker
+
+Install {docker-install-url}[Docker].
+
+[#exiftool]
+==== exiftool
+
+===== Linux
+
+[,console]
+----
+$ sudo apt-get install exiftool
+----
+
+===== Mac
+
+[,console]
+----
+$ brew install exiftool
+----
+
+[#qpdf]
+==== qpdf
+
+===== Linux
+
+[,console]
+----
+$ sudo apt-get install qpdf
+----
+
+===== Mac
+
+[,console]
+----
+$ brew install qpdf
+----
+
 ==== shellcheck
 
 ===== Linux
@@ -225,6 +268,22 @@ $ sudo apt-get install shfmt
 [,console]
 ----
 $ brew install shfmt
+----
+
+==== yamllint
+
+===== Linux
+
+[,console]
+----
+$ sudo apt-get install yamllint
+----
+
+===== Mac
+
+[,console]
+----
+$ brew install yamllint
 ----
 
 [#ide]

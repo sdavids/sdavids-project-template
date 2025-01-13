@@ -1,0 +1,5 @@
+Contact:: mailto:sdavids@gmx.de[Sebastian Davids]
+System:: Test
+Image:: Image
+Documentation:: https://github.com/sdavids/sdavids-project-template/
+Source:: https://github.com/sdavids/sdavids-project-template/
