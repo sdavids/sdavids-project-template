@@ -8,6 +8,6 @@ Sebastian Davids <sdavids@gmx.de>
 * Find/Replace `sdavids-project-template` with the new project name
 
 // -
-* Update `:description:` in `README.adoc`
+* Update `:description:` in `README.adoc`, `docs/README.adoc`, and `docs/src/docs/asciidoc/index.adoc`
 * Remove the _Using This Template Repository_ section from `README.adoc`
 * Add meaningful content to `README.adoc`
