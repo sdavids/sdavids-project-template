@@ -1,0 +1,22 @@
+// SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+// SPDX-License-Identifier: Apache-2.0
+= sdavids-project-template
+Sebastian Davids <sdavids@gmx.de>
+// Metadata:
+:description: .
+// Settings:
+:sectnums:
+:sectanchors:
+:sectlinks:
+:toc: macro
+:toc-placement!:
+:hide-uri-scheme:
+// Refs:
+:published-doc-base-url: https://sdavids.github.io/sdavids/sdavids-project-template
+
+ifdef::env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+* link:c4/index{outfilesuffix}[Architecture Overview]
+* link:adr{outfilesuffix}[Architecture Decision Records]

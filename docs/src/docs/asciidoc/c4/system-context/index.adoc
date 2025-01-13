@@ -1,0 +1,51 @@
+// SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+// SPDX-License-Identifier: Apache-2.0
+= sdavids-project-template System Context Diagram
+Sebastian Davids <sdavids@gmx.de>
+// Metadata:
+:description: sdavids-project-template system context diagram
+// Settings:
+:sectnums:
+:sectanchors:
+:sectlinks:
+:toc: macro
+:toclevels: 3
+:toc-placement!:
+:hide-uri-scheme:
+
+ifdef::env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+https://c4model.com/#SystemContextDiagram[System Context Diagram] for
+_sdavids-project-template_.
+
+[plantuml]
+----
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+Person(p, "Support")
+
+System(t, "Test System")
+
+@enduml
+----
+
+== Systems
+
+=== Test
+
+* link:../container/index{outfilesuffix}[Container Diagram]
+
+Contact: mailto:sdavids@gmx.de[Sebastian Davids]
+
+== Persons
+
+=== Internal Persons
+
+==== Support
+
+Contact: mailto:sdavids@gmx.de[Sebastian Davids]
+
+* provides support

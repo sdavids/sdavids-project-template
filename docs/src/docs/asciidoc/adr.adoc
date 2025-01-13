@@ -1,0 +1,28 @@
+// SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+// SPDX-License-Identifier: Apache-2.0
+= sdavids-project-template Architecture Decision Records
+Sebastian Davids <sdavids@gmx.de>
+// Metadata:
+:description: sdavids-project-template architecture
+// Settings:
+:sectnums:
+:sectanchors:
+:sectlinks:
+:toc: macro
+:toc-placement!:
+:hide-uri-scheme:
+
+ifdef::env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+== ADRs
+
+["decimal-leading-zero"]
+. link:adr/0001-example{outfilesuffix}[Example]
+
+== More Information on ADRs
+
+* https://adr.github.io[Homepage of the ADR GitHub organization]
+* https://www.agilealliance.org/resources/experience-reports/distribute-design-authority-with-architecture-decision-records/[Share the Load: Distribute Design Authority with Architecture Decision Records]
+* Video: https://www.youtube.com/watch?v=LMBqGPLvonU[Architecture Decision Records]
