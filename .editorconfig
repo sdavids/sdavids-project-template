@@ -18,3 +18,6 @@ max_line_length = 80
 
 [*.adoc]
 max_line_length = off
+
+[*.{yaml,yml}]
+max_line_length = 80
