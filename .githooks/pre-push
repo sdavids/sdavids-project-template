@@ -19,6 +19,13 @@
 #   Linux:
 #     sudo apt-get install shfmt
 
+# yamllint needs to be in $PATH
+# https://yamllint.readthedocs.io/en/stable/
+#   Mac:
+#     brew install yamllint
+#   Linux:
+#     sudo apt-get install yamllint
+
 set -u
 
 if [ -n "$(git status --porcelain=v1)" ]; then
@@ -40,3 +47,6 @@ unset diff
 set -e
 
 { shfmt -l=0 . | xargs -0 shellcheck; } >&2
+
+# https://yamllint.readthedocs.io/en/stable/quickstart.html#running-yamllint
+yamllint --strict . >&2

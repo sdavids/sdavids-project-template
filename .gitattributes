@@ -11,3 +11,6 @@
 
 *.adoc linguist-documentation
 *.sh diff=bash
+
+*.ttf binary -eol -whitespace
+*.woff2 binary -eol -whitespace

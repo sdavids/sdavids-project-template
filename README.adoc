@@ -14,6 +14,8 @@ Sebastian Davids <sdavids@gmx.de>
 :hide-uri-scheme:
 :source-highlighter: rouge
 :rouge-style: github
+// Refs:
+:docker-install-url: https://docs.docker.com/install/
 
 ifdef::env-browser[:outfilesuffix: .adoc]
 
@@ -159,6 +161,10 @@ $ scripts/git_cleanup.sh -e now
 
 . Your project is ready to go 🎉
 
+== Usage
+
+see link:docs/README.adoc[]
+
 == Development Environment Setup
 
 [IMPORTANT]
@@ -173,6 +179,44 @@ $ git config set core.hooksPath .githooks
 
 [#dev-env-installation]
 === Installation
+
+==== Docker
+
+Install {docker-install-url}[Docker].
+
+[#exiftool]
+==== exiftool
+
+===== Linux
+
+[,console]
+----
+$ sudo apt-get install exiftool
+----
+
+===== Mac
+
+[,console]
+----
+$ brew install exiftool
+----
+
+[#qpdf]
+==== qpdf
+
+===== Linux
+
+[,console]
+----
+$ sudo apt-get install qpdf
+----
+
+===== Mac
+
+[,console]
+----
+$ brew install qpdf
+----
 
 ==== shellcheck
 
@@ -204,4 +248,20 @@ $ sudo apt-get install shfmt
 [,console]
 ----
 $ brew install shfmt
+----
+
+==== yamllint
+
+===== Linux
+
+[,console]
+----
+$ sudo apt-get install yamllint
+----
+
+===== Mac
+
+[,console]
+----
+$ brew install yamllint
 ----
