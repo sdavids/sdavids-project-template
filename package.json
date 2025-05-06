@@ -17,9 +17,10 @@
   "scripts": {
     "preinstall": "scripts/macos_node_modules_fix.sh",
     "prepare": "scripts/prepare.sh",
-    "check:types": "tsc --project tsconfig.prod.json && tsc --project src/tsconfig.prod.json",
+    "check:types": "tsc --project tsconfig.prod.json && tsc --project vitest/tsconfig.prod.json",
     "check:types:node": "tsc --project tsconfig.prod.json",
     "check:types:src": "tsc --project src/tsconfig.prod.json",
+    "check:types:vitest": "tsc --project vitest/tsconfig.prod.json",
     "clean": "scripts/clean.sh",
     "clean:node": "scripts/clean_node.sh",
     "dependency:updates": "scripts/dependency_check_node.sh",
@@ -29,7 +30,11 @@
     "format": "scripts/format.sh",
     "format:check": "scripts/format_check.sh",
     "lint": "scripts/lint.sh",
-    "lint:fix": "scripts/lint_fix.sh"
+    "lint:fix": "scripts/lint_fix.sh",
+    "test": "vitest run",
+    "test:ci": "vitest run --reporter default --reporter json --outputFile reports/vitest/test-output.json",
+    "test:verbose": "vitest run --reporter verbose",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "react": "19.1.0",
@@ -41,11 +46,14 @@
     "@eslint/js": "9.27.0",
     "@eslint/json": "0.12.0",
     "@prettier/plugin-xml": "3.4.1",
+    "@testing-library/dom": "10.4.0",
+    "@testing-library/jest-dom": "6.6.3",
     "@types/eslint-plugin-jsx-a11y": "6.10.0",
     "@types/node": "22.15.19",
     "@types/react": "19.1.4",
     "@types/react-dom": "19.1.5",
     "@vitejs/plugin-react": "4.4.1",
+    "@vitest/eslint-plugin": "1.2.0",
     "browserslist": "4.24.5",
     "browserslist-config-baseline": "0.4.0",
     "browserslist-to-esbuild": "2.1.1",
@@ -53,10 +61,13 @@
     "eslint-import-resolver-typescript": "4.3.5",
     "eslint-plugin-depend": "1.2.0",
     "eslint-plugin-import-x": "4.12.2",
+    "eslint-plugin-jest-dom": "5.5.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-react-hooks": "5.2.0",
     "eslint-plugin-react-refresh": "0.4.20",
+    "eslint-plugin-testing-library": "7.2.1",
     "globals": "16.1.0",
+    "happy-dom": "17.4.7",
     "husky": "9.1.7",
     "jiti": "2.4.2",
     "lightningcss": "1.30.1",
@@ -68,7 +79,8 @@
     "vite": "6.3.5",
     "vite-plugin-csp-guard": "2.1.1",
     "vite-plugin-minify": "2.1.0",
-    "vite-plugin-sitemap": "0.8.2"
+    "vite-plugin-sitemap": "0.8.2",
+    "vitest": "3.1.4"
   },
   "optionalDependencies": {
     "@rollup/rollup-darwin-arm64": "4.41.0",
