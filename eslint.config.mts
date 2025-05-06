@@ -8,6 +8,9 @@ import css from '@eslint/css';
 import tseslint, { configs } from 'typescript-eslint';
 import * as depend from 'eslint-plugin-depend';
 import * as pluginImportX from 'eslint-plugin-import-x';
+import vitest from '@vitest/eslint-plugin';
+import testingLibrary from 'eslint-plugin-testing-library';
+import jestDom from 'eslint-plugin-jest-dom';
 
 import type { FlatConfig } from '@typescript-eslint/utils/ts-eslint';
 
@@ -70,6 +73,32 @@ const cfg: FlatConfig.ConfigArray = tseslint.config(
     files: ['**/*.{mts,ts}'],
     ...js.configs.all,
     name: 'eslint/ts/all',
+  },
+  {
+    files: ['vitest/*.test.mts', 'vitest/**/*.test.mts'],
+    plugins: {
+      vitest,
+    },
+    rules: {
+      ...vitest.configs.recommended.rules,
+      'import-x/no-unresolved': [
+        'error',
+        {
+          ignore: ['^@src'],
+        },
+      ],
+    },
+    name: 'eslint/vitest',
+  },
+  {
+    files: ['vitest/*.test.mts', 'vitest/**/*.test.mts'],
+    ...testingLibrary.configs['flat/dom'],
+    name: 'eslint/testing-library',
+  },
+  {
+    files: ['vitest/*.test.mts', 'vitest/**/*.test.mts'],
+    ...jestDom.configs['flat/all'],
+    name: 'eslint/jest-dom',
   },
   {
     files: ['**/*.{mts,ts}'],
@@ -217,6 +246,24 @@ const cfg: FlatConfig.ConfigArray = tseslint.config(
       'no-undefined': 'off',
     },
     name: 'sdavids/ts/browser',
+  },
+  {
+    files: ['vitest/**/*.mts'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+      parserOptions: {
+        ecmaVersion: 'latest',
+      },
+    },
+    rules: {
+      'init-declarations': 'off',
+      'no-shadow': 'off',
+      'no-undefined': 'off',
+    },
+    name: 'sdavids/ts/vitest',
   },
   {
     files: ['*.mts'],
