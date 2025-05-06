@@ -1,0 +1,61 @@
+/*
+ * SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+@layer reset {
+  *,
+  ::after,
+  ::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* https://dev.to/colingourlay/how-to-support-apple-s-dynamic-text-in-your-web-content-with-css-40c0 */
+  @supports (font: -apple-system-body) {
+    @media screen and (max-width: 719px) {
+      html {
+        /* eslint-disable-next-line css/no-important */
+        font: -apple-system-body !important;
+      }
+    }
+  }
+
+  html,
+  :host {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    font-family:
+    /* eslint-disable-next-line css/use-baseline */
+      ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+      sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji";
+  }
+
+  body {
+    line-height: inherit;
+  }
+}
+
+@layer reset {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100svh;
+  }
+
+  body {
+    color: #000;
+    background-color: #fff;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      color: #fff;
+      background-color: #000;
+    }
+  }
+}

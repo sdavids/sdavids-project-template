@@ -1,0 +1,43 @@
+---
+# SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+# SPDX-License-Identifier: Apache-2.0
+
+name: Setup node and install dependencies
+description: Setup node and install dependencies
+author: Sebastian Davids
+inputs:
+  working-directory:
+    description: the working directory
+    required: false
+    default: .
+  node-version-file:
+    description: the path to the node version file
+    required: false
+    default: .nvmrc
+  dependencies-lock-file:
+    description: the path to the dependencies lock file
+    required: false
+    default: package-lock.json
+  audit:
+    description: run a security audit
+    required: false
+    default: "true"
+  ignore-scripts:
+    description: ignore the pre-/post-install scripts
+    required: false
+    default: "true"
+runs:
+  using: composite
+  steps:
+    - name: Setup Node.js
+      # https://github.com/actions/setup-node/releases
+      uses: actions/setup-node@v4.4.0
+      with:
+        node-version-file: ${{ inputs.node-version-file }}
+        cache-dependency-path: ${{ inputs.dependencies-lock-file }}
+        cache: npm
+    - name: Install dependencies
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      # yamllint disable-line
+      run: npm ci --fund=false --audit=${{ inputs.audit }} --ignore-scripts=${{ inputs.ignore-scripts }}

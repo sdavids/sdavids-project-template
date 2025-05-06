@@ -11,3 +11,12 @@ Sebastian Davids <sdavids@gmx.de>
 * Update `:description:` in `README.adoc`
 * Remove the _Using This Template Repository_ section from `README.adoc`
 * Add meaningful content to `README.adoc`
+
+// -
+* Update `package.json`
+** remove `bugs` if project does not support issues
+** `description`
+
+// -
+* Update `vite.config.mts`
+** change `sitemap.hostname`

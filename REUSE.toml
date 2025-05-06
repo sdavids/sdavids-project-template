@@ -6,3 +6,38 @@ version = 1
 SPDX-PackageName = "sdavids-project-template"
 SPDX-PackageSupplier = "Sebastian Davids <sdavids@gmx.de>"
 SPDX-PackageDownloadLocation = "https://github.com/sdavids/sdavids-project-template"
+
+[[annotations]]
+path = ".nvmrc"
+SPDX-FileCopyrightText = "© 2025 Sebastian Davids <sdavids@gmx.de>"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["package.json", "package-lock.json"]
+SPDX-FileCopyrightText = "© 2025 Sebastian Davids <sdavids@gmx.de>"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = [
+  "tsconfig.json",
+  "tsconfig.base.json",
+  "tsconfig.prod.json",
+  "src/tsconfig.json",
+  "src/tsconfig.prod.json",
+]
+SPDX-FileCopyrightText = "© 2025 Sebastian Davids <sdavids@gmx.de>"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = [".devcontainer/devcontainer-lock.json"]
+SPDX-FileCopyrightText = "© 2025 Sebastian Davids <sdavids@gmx.de>"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = [
+  "src/public/favicon.ico",
+  "src/public/icon.svg",
+  "src/public/apple-touch-icon.png",
+]
+SPDX-FileCopyrightText = "© 2025 Sebastian Davids <sdavids@gmx.de>"
+SPDX-License-Identifier = "Apache-2.0"

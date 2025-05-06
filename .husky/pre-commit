@@ -1,0 +1,7 @@
+# shellcheck shell=sh
+
+# SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+# SPDX-License-Identifier: Apache-2.0
+
+# https://github.com/lint-staged/lint-staged/releases/tag/v15.4.0
+NODE_OPTIONS="--experimental-strip-types --disable-warning=ExperimentalWarning" npx --yes --quiet lint-staged >&2
