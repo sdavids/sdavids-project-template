@@ -42,6 +42,7 @@
         "ms-azuretools.vscode-docker",
         "asciidoctor.asciidoctor-vscode",
         "dbaeumer.vscode-eslint",
+        "vitest.explorer",
         "esbenp.prettier-vscode",
         "redhat.vscode-yaml",
         "tamasfe.even-better-toml",
