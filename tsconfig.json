@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./tsconfig.base.json",
+  "include": ["*.mts"],
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "lib": ["esnext", "dom"],
+    "types": [],
+    "tsBuildInfoFile": "./node_modules/.cache/tsc/.tsbuildcache"
+  }
+}

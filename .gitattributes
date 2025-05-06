@@ -11,3 +11,11 @@
 
 *.adoc linguist-documentation
 *.sh diff=bash
+
+*.css diff=css
+*.html diff=html
+
+*.ico binary -eol -whitespace
+*.png binary -eol -whitespace
+
+package-lock.json linguist-generated=true
