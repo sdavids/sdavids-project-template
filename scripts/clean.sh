@@ -11,8 +11,10 @@ readonly build_dir="${base_dir}/dist"
 readonly eslint_cache_file="${base_dir}/node_modules/.cache/eslint/.eslintcache"
 readonly prettier_cache_file="${base_dir}/node_modules/.cache/prettier/.prettier-cache"
 readonly ts_build_info_file="${base_dir}/node_modules/.cache/tsc/.tsbuildcache"
+readonly reports_dir="${base_dir}/reports"
 
 rm -rf "${build_dir}" \
   "${eslint_cache_file}" \
   "${prettier_cache_file}" \
-  "${ts_build_info_file}"
+  "${ts_build_info_file}" \
+  "${reports_dir}"

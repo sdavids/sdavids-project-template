@@ -11,6 +11,9 @@ import { flatConfigs as importConfigs } from "eslint-plugin-import-x";
 import eslintReact from "@eslint-react/eslint-plugin";
 import reactRefresh from "eslint-plugin-react-refresh";
 import jsxA11y from "eslint-plugin-jsx-a11y";
+import vitest from "@vitest/eslint-plugin";
+import testingLibrary from "eslint-plugin-testing-library";
+import jestDom from "eslint-plugin-jest-dom";
 
 import type { FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 
@@ -97,6 +100,46 @@ const cfg: FlatConfig.ConfigArray = tseslint.config(
     files: ["**/*.{mts,ts,tsx}"],
     ...js.configs.all,
     name: "eslint/ts/all",
+  },
+  {
+    files: ["vitest/*.test.mts", "vitest/**/*.test.mts"],
+    plugins: {
+      vitest,
+    },
+    rules: {
+      ...vitest.configs.all.rules,
+      ...vitest.configs.recommended.rules,
+      "import-x/no-unresolved": ["error", { ignore: ["^@src"] }],
+      "vitest/max-expects": "off",
+      "vitest/no-done-callback": "off",
+      "vitest/no-hooks": "off",
+      "vitest/padding-around-after-all-blocks": "off",
+      "vitest/padding-around-after-each-blocks": "off",
+      "vitest/padding-around-before-all-blocks": "off",
+      "vitest/padding-around-before-each-blocks": "off",
+      "vitest/padding-around-describe-blocks": "off",
+      "vitest/padding-around-expect-groups": "off",
+      "vitest/padding-around-test-blocks": "off",
+      "vitest/prefer-describe-function-title": "off",
+      "vitest/prefer-expect-assertions": "off",
+    },
+    name: "eslint/vitest",
+  },
+  {
+    files: ["vitest/*.test.mts", "vitest/**/*.test.mts"],
+    ...testingLibrary.configs["flat/react"],
+    rules: {
+      ...testingLibrary.configs["flat/react"].rules,
+      "testing-library/no-test-id-queries": "error",
+      "testing-library/prefer-explicit-assert": "error",
+      "testing-library/prefer-user-event": "error",
+    },
+    name: "eslint/testing-library",
+  },
+  {
+    files: ["vitest/*.test.mts", "vitest/**/*.test.mts"],
+    ...jestDom.configs["flat/all"],
+    name: "eslint/jest-dom",
   },
   {
     files: ["**/*.{mts,ts,tsx}"],
@@ -283,6 +326,31 @@ const cfg: FlatConfig.ConfigArray = tseslint.config(
       "no-undefined": "off",
     },
     name: "sdavids/ts/browser",
+  },
+  {
+    files: ["vitest/**/*.mts"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+      parserOptions: {
+        ecmaVersion: "latest",
+      },
+    },
+    rules: {
+      "import-x/no-extraneous-dependencies": [
+        "error",
+        {
+          optionalDependencies: false,
+          peerDependencies: false,
+        },
+      ],
+      "init-declarations": "off",
+      "no-shadow": "off",
+      "no-undefined": "off",
+    },
+    name: "sdavids/ts/vitest",
   },
   {
     files: ["*.mts"],
