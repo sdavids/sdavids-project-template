@@ -14,6 +14,7 @@ import jsxA11y from "eslint-plugin-jsx-a11y";
 import vitest from "@vitest/eslint-plugin";
 import testingLibrary from "eslint-plugin-testing-library";
 import jestDom from "eslint-plugin-jest-dom";
+import playwright from "eslint-plugin-playwright";
 
 import type { FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 
@@ -140,6 +141,32 @@ const cfg: FlatConfig.ConfigArray = tseslint.config(
     files: ["vitest/*.test.mts", "vitest/**/*.test.mts"],
     ...jestDom.configs["flat/all"],
     name: "eslint/jest-dom",
+  },
+  {
+    ...playwright.configs["flat/recommended"],
+    files: ["playwright/**/*.mts"],
+    rules: {
+      ...playwright.configs["flat/recommended"].rules,
+      "playwright/no-duplicate-hooks": "error",
+      "playwright/no-get-by-title": "error",
+      "playwright/no-skipped-test": ["error", { allowConditional: true }],
+      "playwright/no-slowed-test": ["error", { allowConditional: false }],
+      "playwright/prefer-comparison-matcher": "error",
+      "playwright/prefer-equality-matcher": "error",
+      "playwright/prefer-hooks-in-order": "error",
+      "playwright/prefer-hooks-on-top": "error",
+      "playwright/prefer-locator": "error",
+      "playwright/prefer-lowercase-title": "error",
+      "playwright/prefer-native-locators": "error",
+      "playwright/prefer-strict-equal": "error",
+      "playwright/prefer-to-be": "error",
+      "playwright/prefer-to-contain": "error",
+      "playwright/prefer-to-have-count": "error",
+      "playwright/prefer-to-have-length": "error",
+      "playwright/require-top-level-describe": "error",
+      "playwright/valid-describe-callback": "error",
+    },
+    name: "eslint/playwright",
   },
   {
     files: ["**/*.{mts,ts,tsx}"],
@@ -351,6 +378,28 @@ const cfg: FlatConfig.ConfigArray = tseslint.config(
       "no-undefined": "off",
     },
     name: "sdavids/ts/vitest",
+  },
+  {
+    files: ["playwright/**/*.mts"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+      parserOptions: {
+        ecmaVersion: "latest",
+      },
+    },
+    rules: {
+      "import-x/no-extraneous-dependencies": [
+        "error",
+        {
+          optionalDependencies: false,
+          peerDependencies: false,
+        },
+      ],
+    },
+    name: "sdavids/ts/playwright",
   },
   {
     files: ["*.mts"],
