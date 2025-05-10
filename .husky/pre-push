@@ -31,6 +31,10 @@
 #   Linux:
 #     sudo apt-get install yamllint
 
+# pkill needs to be in $PATH
+#   Linux:
+#     sudo apt-get install procps
+
 set -eu
 
 if [ -n "$(git status --porcelain=v1)" ]; then
@@ -88,3 +92,28 @@ node --run test >&2
 GIT_PUSH_HOOK=true node --run build >&2
 
 GIT_PUSH_HOOK=true node --run playwright >&2
+
+exit_cleanup() {
+  err=$?
+  trap '' EXIT INT QUIT TERM
+  pkill -P $PREVIEW_PID
+  unset PREVIEW_PID
+  exit $err
+}
+
+sig_cleanup() {
+  err=$?
+  trap '' EXIT
+  set +e
+  (exit $err)
+  exit_cleanup
+}
+
+# https://unix.stackexchange.com/questions/57940/trap-int-term-exit-really-necessary/
+trap exit_cleanup EXIT
+trap sig_cleanup INT QUIT TERM
+
+GIT_PUSH_HOOK=true node --run preview >&2 &
+export PREVIEW_PID=$!
+
+GIT_PUSH_HOOK=true node --run lhci:githook >&2
