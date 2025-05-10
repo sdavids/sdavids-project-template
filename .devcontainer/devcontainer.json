@@ -47,7 +47,8 @@
         "redhat.vscode-yaml",
         "tamasfe.even-better-toml",
         "timonwong.shellcheck",
-        "foxundermoon.shell-format"
+        "foxundermoon.shell-format",
+        "ms-playwright.playwright"
       ],
       "settings": {
         "files.encoding": "utf8",
