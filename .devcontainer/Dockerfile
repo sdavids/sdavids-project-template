@@ -13,6 +13,11 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # hadolint ignore=DL3008
 RUN apt-get update \
   && export DEBIAN_FRONTEND=noninteractive \
+# for lhci
+  && apt-get -y install --no-install-recommends ca-certificates curl gnupg2 \
+  && curl -s https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg \
+  && mkdir -p /etc/apt/sources.list.d \
+  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb/ stable main" >/etc/apt/sources.list.d/google-chrome.list \
 # for newer version of reuse
   && apt-get -y install --no-install-recommends ca-certificates \
   && mkdir -p /etc/apt/sources.list.d \
@@ -26,12 +31,13 @@ RUN apt-get update \
     locales \
     sudo \
     openssh-client \
-    curl \
     git \
     shfmt \
     shellcheck \
     yamllint \
     neovim \
+# for lhci \
+    google-chrome-stable \
 # for newer version of reuse
   && apt-get -y install --no-install-recommends -f reuse \
 # clean up
