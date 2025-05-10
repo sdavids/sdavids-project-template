@@ -11,6 +11,7 @@ import * as pluginImportX from 'eslint-plugin-import-x';
 import vitest from '@vitest/eslint-plugin';
 import testingLibrary from 'eslint-plugin-testing-library';
 import jestDom from 'eslint-plugin-jest-dom';
+import playwright from 'eslint-plugin-playwright';
 
 import type { FlatConfig } from '@typescript-eslint/utils/ts-eslint';
 
@@ -99,6 +100,20 @@ const cfg: FlatConfig.ConfigArray = tseslint.config(
     files: ['vitest/*.test.mts', 'vitest/**/*.test.mts'],
     ...jestDom.configs['flat/all'],
     name: 'eslint/jest-dom',
+  },
+  {
+    ...playwright.configs['flat/recommended'],
+    files: ['playwright/**/*.mts'],
+    rules: {
+      ...playwright.configs['flat/recommended'].rules,
+      'playwright/no-skipped-test': [
+        'error',
+        {
+          allowConditional: true,
+        },
+      ],
+    },
+    name: 'eslint/playwright',
   },
   {
     files: ['**/*.{mts,ts}'],
@@ -264,6 +279,19 @@ const cfg: FlatConfig.ConfigArray = tseslint.config(
       'no-undefined': 'off',
     },
     name: 'sdavids/ts/vitest',
+  },
+  {
+    files: ['playwright/**/*.mts'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+      parserOptions: {
+        ecmaVersion: 'latest',
+      },
+    },
+    name: 'sdavids/ts/playwright',
   },
   {
     files: ['*.mts'],
