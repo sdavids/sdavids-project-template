@@ -43,13 +43,17 @@
     "playwright:smoke": "scripts/playwright_smoke.sh",
     "playwright:snapshots:update": "scripts/playwright_update_snapshots.sh",
     "playwright:trace": "scripts/playwright_trace.sh",
-    "playwright:ui": "scripts/playwright_ui.sh"
+    "playwright:ui": "scripts/playwright_ui.sh",
+    "lhci": "lhci autorun",
+    "lhci:ci": "lhci autorun --config lighthouserc.ci.yaml",
+    "lhci:githook": "lhci autorun --config lighthouserc.githook.yaml"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.10.1",
     "@eslint/css": "0.8.1",
     "@eslint/js": "9.27.0",
     "@eslint/json": "0.12.0",
+    "@lhci/cli": "0.14.0",
     "@playwright/test": "1.52.0",
     "@prettier/plugin-xml": "3.4.1",
     "@testing-library/dom": "10.4.0",
