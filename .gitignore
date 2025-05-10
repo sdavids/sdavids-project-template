@@ -59,3 +59,6 @@ reports/
 
 ### Playwright ###
 .playwright/
+
+### Lighthouse CI ###
+.lighthouseci/

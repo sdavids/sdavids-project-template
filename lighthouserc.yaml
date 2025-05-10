@@ -1,0 +1,20 @@
+---
+# SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+# SPDX-License-Identifier: Apache-2.0
+
+# https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/configuration.md
+# https://github.com/GoogleChrome/lighthouse/blob/main/docs/configuration.md#lighthouse-configuration
+ci:
+  upload:
+    target: filesystem
+    outputDir: reports/lhci
+  collect:
+    url:
+      - http://localhost:3000/index.html
+  assert:
+    preset: lighthouse:recommended
+    assertions:
+      # https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/configuration.md#assertions
+      # https://github.com/GoogleChrome/lighthouse/blob/main/core/config/default-config.js
+      render-blocking-resources: "off"
+      unused-javascript: "off"
