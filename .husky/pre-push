@@ -81,7 +81,10 @@ node --run lint >&2
 
 node --run check:types:node >&2
 node --run check:types:vitest >&2
+node --run check:types:playwright >&2
 
 node --run test >&2
 
 GIT_PUSH_HOOK=true node --run build >&2
+
+GIT_PUSH_HOOK=true node --run playwright >&2

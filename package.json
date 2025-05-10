@@ -17,7 +17,8 @@
   "scripts": {
     "preinstall": "scripts/macos_node_modules_fix.sh",
     "prepare": "scripts/prepare.sh",
-    "check:types": "tsc --project tsconfig.prod.json && tsc --project vitest/tsconfig.prod.json",
+    "check:types": "tsc --project tsconfig.prod.json && tsc --project vitest/tsconfig.prod.json && tsc --project playwright/tsconfig.prod.json",
+    "check:types:playwright": "tsc --project playwright/tsconfig.prod.json",
     "check:types:node": "tsc --project tsconfig.prod.json",
     "check:types:src": "tsc --project src/tsconfig.prod.json",
     "check:types:vitest": "tsc --project vitest/tsconfig.prod.json",
@@ -34,17 +35,27 @@
     "test": "vitest run",
     "test:ci": "vitest run --reporter default --reporter json --outputFile reports/vitest/test-output.json",
     "test:verbose": "vitest run --reporter verbose",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "playwright": "scripts/playwright.sh",
+    "playwright:ci": "scripts/playwright_ci.sh",
+    "playwright:failed": "scripts/playwright_failed.sh",
+    "playwright:report": "scripts/playwright_show_report.sh",
+    "playwright:smoke": "scripts/playwright_smoke.sh",
+    "playwright:snapshots:update": "scripts/playwright_update_snapshots.sh",
+    "playwright:trace": "scripts/playwright_trace.sh",
+    "playwright:ui": "scripts/playwright_ui.sh"
   },
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.10.1",
     "@eslint-react/eslint-plugin": "1.49.0",
     "@eslint/css": "0.8.1",
     "@eslint/js": "9.27.0",
     "@eslint/json": "0.12.0",
+    "@playwright/test": "1.52.0",
     "@prettier/plugin-xml": "3.4.1",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
@@ -63,6 +74,7 @@
     "eslint-plugin-import-x": "4.12.2",
     "eslint-plugin-jest-dom": "5.5.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-playwright": "2.2.0",
     "eslint-plugin-react-hooks": "5.2.0",
     "eslint-plugin-react-refresh": "0.4.20",
     "eslint-plugin-testing-library": "7.2.1",
