@@ -13,10 +13,12 @@ readonly prettier_cache_file="${base_dir}/node_modules/.cache/prettier/.prettier
 readonly ts_build_info_file="${base_dir}/node_modules/.cache/tsc/.tsbuildcache"
 readonly reports_dir="${base_dir}/reports"
 readonly playwright_dir="${base_dir}/.playwright"
+readonly lhci_dir="${base_dir}/.lighthouseci"
 
 rm -rf "${build_dir}" \
   "${eslint_cache_file}" \
   "${prettier_cache_file}" \
   "${ts_build_info_file}" \
   "${reports_dir}" \
-  "${playwright_dir}"
+  "${playwright_dir}" \
+  "${lhci_dir}"
