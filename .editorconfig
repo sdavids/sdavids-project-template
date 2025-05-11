@@ -28,7 +28,7 @@ max_line_length = 80
 [*.css]
 max_line_length = 80
 
-[*.{mts,ts}]
+[*.{mts,ts,tsx}]
 max_line_length = 80
 
 [*.json]

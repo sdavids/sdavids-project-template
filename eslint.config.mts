@@ -8,6 +8,9 @@ import css from "@eslint/css";
 import tseslint, { configs } from "typescript-eslint";
 import { configs as dependConfigs } from "eslint-plugin-depend";
 import { flatConfigs as importConfigs } from "eslint-plugin-import-x";
+import eslintReact from "@eslint-react/eslint-plugin";
+import reactRefresh from "eslint-plugin-react-refresh";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 
 import type { FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 
@@ -91,12 +94,12 @@ const cfg: FlatConfig.ConfigArray = tseslint.config(
     name: "eslint/ts/import",
   },
   {
-    files: ["**/*.{mts,ts}"],
+    files: ["**/*.{mts,ts,tsx}"],
     ...js.configs.all,
     name: "eslint/ts/all",
   },
   {
-    files: ["**/*.{mts,ts}"],
+    files: ["**/*.{mts,ts,tsx}"],
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -120,7 +123,37 @@ const cfg: FlatConfig.ConfigArray = tseslint.config(
     name: "eslint/depend/allowed",
   },
   {
-    files: ["**/*.{mts,ts}"],
+    files: ["src/*.{ts,tsx}", "src/**/*.{ts,tsx}"],
+    settings: {
+      react: {
+        version: "19",
+      },
+    },
+    name: "eslint/ts/react-version",
+  },
+  {
+    files: ["src/*.{ts,tsx}", "src/**/*.{ts,tsx}"],
+    ...eslintReact.configs["recommended-type-checked"],
+    name: "eslint/ts/react",
+  },
+  {
+    files: ["src/*.{ts,tsx}", "src/**/*.{ts,tsx}"],
+    ...reactRefresh.configs.vite,
+    name: "eslint/ts/react-refresh",
+  },
+  {
+    files: ["src/*.{ts,tsx}", "src/**/*.{ts,tsx}"],
+    ...jsxA11y.flatConfigs.recommended,
+    rules: {
+      ...jsxA11y.flatConfigs.recommended.rules,
+      "jsx-a11y/lang": "error",
+      "jsx-a11y/no-aria-hidden-on-focusable": "error",
+      "jsx-a11y/prefer-tag-over-role": "error",
+    },
+    name: "eslint/ts/react-jsxA11y",
+  },
+  {
+    files: ["**/*.{mts,ts,tsx}"],
     rules: {
       "capitalized-comments": "off",
       "func-names": ["error", "always", { generators: "as-needed" }],
@@ -150,7 +183,7 @@ const cfg: FlatConfig.ConfigArray = tseslint.config(
     name: "sdavids/defaults/js",
   },
   {
-    files: ["**/*.{mts,ts}"],
+    files: ["**/*.{mts,ts,tsx}"],
     rules: {
       "class-methods-use-this": "off",
       "@typescript-eslint/class-methods-use-this": "error",
@@ -225,7 +258,7 @@ const cfg: FlatConfig.ConfigArray = tseslint.config(
     name: "sdavids/ts/defaults",
   },
   {
-    files: ["src/*.ts", "src/**/*.ts"],
+    files: ["src/*.{ts,tsx}", "src/**/*.{ts,tsx}"],
     languageOptions: {
       globals: {
         ...globals.browser,

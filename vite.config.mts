@@ -10,6 +10,7 @@ import { defineConfig, loadEnv } from "vite";
 import csp from "vite-plugin-csp-guard";
 import { ViteMinifyPlugin as minify } from "vite-plugin-minify";
 import sitemap from "vite-plugin-sitemap";
+import viteReact from "@vitejs/plugin-react";
 
 import type { UserConfig, UserConfigFnObject } from "vite";
 
@@ -17,6 +18,7 @@ const list = browserslist();
 
 // https://vite.dev/config/
 const plugins = [
+  viteReact(),
   csp({
     // https://vite-csp.tsotne.co.uk/api-docs#options
     build: {

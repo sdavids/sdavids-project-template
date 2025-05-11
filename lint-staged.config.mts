@@ -5,7 +5,7 @@ import type { Configuration } from "lint-staged";
 
 // https://github.com/okonet/lint-staged#configuration
 export default {
-  "*.ts": (stagedFiles) => [
+  "*.{ts,tsx}": (stagedFiles) => [
     `prettier --check ${stagedFiles.join(" ")}`,
     `eslint ${stagedFiles.join(" ")}`,
     "tsc --project src/tsconfig.prod.json",
