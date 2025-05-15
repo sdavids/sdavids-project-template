@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: © 2025 Sebastian Davids <sdavids@gmx.de>
+# SPDX-License-Identifier: Apache-2.0
+
+# https://lychee.cli.rs/usage/cli/#options
+# https://github.com/lycheeverse/lychee/blob/master/lychee.example.toml
+
+no_progress = true
+
+format = "markdown"
+
+include_fragments = true
