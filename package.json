@@ -46,7 +46,8 @@
     "playwright:ui": "scripts/playwright_ui.sh",
     "lhci": "lhci autorun",
     "lhci:ci": "lhci autorun --config lighthouserc.ci.yaml",
-    "lhci:githook": "lhci autorun --config lighthouserc.githook.yaml"
+    "lhci:githook": "lhci autorun --config lighthouserc.githook.yaml",
+    "lychee": "scripts/lychee.sh"
   },
   "dependencies": {
     "react": "19.1.0",
