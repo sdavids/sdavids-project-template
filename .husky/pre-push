@@ -117,3 +117,5 @@ GIT_PUSH_HOOK=true node --run preview >&2 &
 export PREVIEW_PID=$!
 
 GIT_PUSH_HOOK=true node --run lhci:githook >&2
+
+GIT_PUSH_HOOK=true node --run lychee >&2
